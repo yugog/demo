@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            background: url("../images/search/search_bg.jpg") no-repeat;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: Microsoft YaHei;
+        }
+        #body_area{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 1080px;
+            width: 1920px;
+            overflow: hidden;
+        }
+        img{
+            vertical-align: top;
+        }
+
+        /*绝对定位*/
+        .item,
+        .pic,
+        .txt,
+        .select,
+        .arrow_control,
+        .item_bg,
+        #body_area {
+            position: absolute;
+        }
+
+        #control_panel{
+            position: absolute;
+            left: 121px;
+            top: 214px;
+        }
+        #control_input{
+            width:847px;
+            height:76px;
+            background: url("../images/search/search_bg.png");
+        }
+        #placeholder {
+            font-size: 28px;
+            padding-left: 90px;
+            line-height: 76px;
+            height: 76px;
+        }
+        #client_input {
+            font-size: 28px;
+            padding-left: 90px;
+            line-height: 76px;
+            height: 76px;
+            display: none;
+        }
+
+        #keyboard{
+            margin-top:19px;
+        }
+        table{
+            border-collapse:unset;
+            border-spacing:22px;
+            margin-left: -20px;
+        }
+        table td{
+            width:86px;
+            height:86px;
+            text-align: center;
+            line-height:86px;
+            background: url("../images/search/letter_bg.png") no-repeat;
+            font-size:36px;
+            font-weight:bold;
+            -webkit-text-stroke: 2px #000;
+        }
+        table td.item_focus{
+            background: url("../images/search/letter_bg_s.png");
+        }
+        #area0_item_5, #area0_item_6, #area0_item_7, #area0_item_13, #area0_item_14,
+        #area0_item_15, #area0_item_21, #area0_item_22, #area0_item_23, #area0_item_31{
+            background: url("../images/search/number_bg.png") no-repeat;
+        }
+        #area0_item_5.item_focus,
+        #area0_item_6.item_focus,
+        #area0_item_7.item_focus,
+        #area0_item_13.item_focus,
+        #area0_item_14.item_focus,
+        #area0_item_15.item_focus,
+        #area0_item_21.item_focus,
+        #area0_item_22.item_focus,
+        #area0_item_23.item_focus,
+        #area0_item_31.item_focus{
+            background: url("../images/search/number_bg_s.png") no-repeat;
+        }
+        #area2_item_0{
+            background: url("../images/search/clear.png");
+        }
+        #area2_item_1{
+            background: url("../images/search/back.png");
+        }
+        #area2_item_0.item_focus{
+            background-image: url("../images/search/clear_s.png");
+        }
+        #area2_item_1.item_focus{
+            background-image: url("../images/search/back_s.png");
+        }
+
+        #result_panel{
+            position: absolute;
+            left:1106px;
+            top:211px;
+        }
+        #result_remind{
+            padding-left: 90px;
+            height:69px;
+            line-height:69px;
+            font-size:32px;
+        }
+        #result_text{
+            padding-left: 90px;
+            height:69px;
+            line-height:69px;
+            font-size:32px;
+            display: none;
+        }
+        #special_str, #special_num{
+            font-size:36px;
+            color:#FFF000;
+        }
+        .txt{
+            width:169px;
+            height:42px;
+            text-align: center;
+            line-height:42px;
+            top:231px;
+        }
+        #result_program .item .pic{
+            left:4px;
+            top:4px;
+        }
+        #result_program .item .pic img{
+            width:161px;
+            height:223px;
+            border-radius: 7px;
+        }
+        .area_3 .item .select{
+            width:169px;
+            height:231px;
+            border:5px solid #fff;
+            border-radius: 10px;
+        }
+        .area_3 .item .item_bg{
+            width: 169px;
+            height:231px;
+            border-radius: 10px;
+            background-color: #493FC8;
+        }
+
+        #result_program .item, #scroll_box{
+            display: none;
+        }
+        #scroll_bar{
+            width:35px;
+            height:566px;
+            background-color: #000;
+            opacity:0.3;
+            border-radius: 16px;
+        }
+        .scrolls{
+            position: absolute;
+        }
+        .scroll{
+            position: relative;
+            line-height:0;
+            left:0;
+            top:0;
+            width:14px;
+            height:10px;
+            background-color: #00A0E9;
+        }
+        .scroll_0{
+            border-radius: 6px 6px 0 0;
+        }
+        .scroll_2{
+            border-radius: 0 0 6px 6px;
+        }
+    </style>
+</head>
+<body  bgcolor="transparent">
+<div id="body_area">
+    <!--搜索框-->
+    <div id="control_panel">
+        <div id="control_input">
+            <div id="placeholder">请输入节目首字母或全拼</div>
+            <div id="client_input"></div>
+        </div>
+        <div id="keyboard">
+            <table>
+                <tr>
+                    <td id="area0_item_0">A</td>
+                    <td id="area0_item_1">B</td>
+                    <td id="area0_item_2">C</td>
+                    <td id="area0_item_3">D</td>
+                    <td id="area0_item_4">E</td>
+                    <td id="area0_item_5">1</td>
+                    <td id="area0_item_6">2</td>
+                    <td id="area0_item_7">3</td>
+                </tr>
+                <tr>
+                    <td id="area0_item_8">F</td>
+                    <td id="area0_item_9">G</td>
+                    <td id="area0_item_10">H</td>
+                    <td id="area0_item_11">I</td>
+                    <td id="area0_item_12">J</td>
+                    <td id="area0_item_13">4</td>
+                    <td id="area0_item_14">5</td>
+                    <td id="area0_item_15">6</td>
+                </tr>
+                <tr>
+                    <td id="area0_item_16">K</td>
+                    <td id="area0_item_17">L</td>
+                    <td id="area0_item_18">M</td>
+                    <td id="area0_item_19">N</td>
+                    <td id="area0_item_20">O</td>
+                    <td id="area0_item_21">7</td>
+                    <td id="area0_item_22">8</td>
+                    <td id="area0_item_23">9</td>
+                </tr>
+                <tr>
+                    <td id="area0_item_24">P</td>
+                    <td id="area0_item_25">Q</td>
+                    <td id="area0_item_26">R</td>
+                    <td id="area0_item_27">S</td>
+                    <td id="area0_item_28">T</td>
+                    <td id="area0_item_29">U</td>
+                    <td id="area0_item_30">V</td>
+                    <td id="area0_item_31">0</td>
+                </tr>
+                <tr>
+                    <td id="area1_item_0">W</td>
+                    <td id="area1_item_1">X</td>
+                    <td id="area1_item_2">Y</td>
+                    <td id="area1_item_3">Z</td>
+                    <td id="area2_item_0" colspan="2"></td>
+                    <td id="area2_item_1" colspan="2"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!--搜索结果-->
+    <div id="result_panel">
+        <!--搜索标题-->
+        <div id="result_title">
+            <div class="pic"><img src="../images/search/search_icon.png" alt=""></div>
+            <div id="result_remind">搜索结果</div>
+            <div id="result_text">“<span id="special_str"></span>”搜索结果共&nbsp;&nbsp;<span id="special_num">25</span>&nbsp;&nbsp;条</div>
+        </div>
+        <!--节目-->
+        <div id="result_program" class="area area_3">
+            <div class="item" id="area3_item_0" style="left: 11px;top: 106px;">
+                <div class="item_bg"></div>
+                <div class="pic"><img id="area3_pic_0" src="" alt=""></div>
+                <div class="txt" id="area3_txt_0"></div>
+                <div class="select"></div>
+            </div>
+            <div class="item" id="area3_item_1" style="left: 235px;top: 106px;">
+                <div class="item_bg"></div>
+                <div class="pic"><img id="area3_pic_1" src="" alt=""></div>
+                <div class="txt" id="area3_txt_1"></div>
+                <div class="select"></div>
+            </div>
+            <div class="item" id="area3_item_2" style="left: 459px;top: 106px;">
+                <div class="item_bg"></div>
+                <div class="pic"><img id="area3_pic_2" src="" alt=""></div>
+                <div class="txt" id="area3_txt_2"></div>
+                <div class="select"></div>
+            </div>
+            <div class="item" id="area3_item_3" style="left: 11px;top: 404px;">
+                <div class="item_bg"></div>
+                <div class="pic"><img id="area3_pic_3" src="" alt=""></div>
+                <div class="txt" id="area3_txt_3"></div>
+                <div class="select"></div>
+            </div>
+            <div class="item" id="area3_item_4" style="left: 235px;top: 404px;">
+                <div class="item_bg"></div>
+                <div class="pic"><img id="area3_pic_4" src="" alt=""></div>
+                <div class="txt" id="area3_txt_4"></div>
+                <div class="select"></div>
+            </div>
+            <div class="item" id="area3_item_5" style="left: 459px;top: 404px;">
+                <div class="item_bg"></div>
+                <div class="pic"><img id="area3_pic_5" src="" alt=""></div>
+                <div class="txt" id="area3_txt_5"></div>
+                <div class="select"></div>
+            </div>
+        </div>
+        <!--滚动条-->
+        <div class="item" id="scroll_box" style="left: 678px;top: 102px;">
+            <div class="item" id="scroll_bar"></div>
+            <div class="scrolls" style="left: 10px;top: 10px;">
+                <div class="scroll scroll_0"></div>
+                <div class="scroll scroll_1"></div>
+                <div class="scroll scroll_2"></div>
+            </div>
+        </div>
+        <!--箭头-->
+        <div class="arrow_control" style="left: 305px;top: 697px; display: none;"><img src="../images/search/search_arrow_down.png" alt=""></div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/WkEpg3.0.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/config.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+    var pageobj;
+    (function(window, document) {
+        var area0, area1, area2, area3;
+        var url = window.location.href;
+        var indexid = !WkEpg.Util.getURLParameter("indexid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("indexid", url)); //焦点数据
+        var areaid = !WkEpg.Util.getURLParameter("areaid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("areaid", url));    //焦点数据
+        var returnurl = !WkEpg.Util.getURLParameter("returnurl", url) ? "index.html" : decodeURIComponent(WkEpg.Util.getURLParameter("returnurl", url));
+
+        var focusObj = null;
+        var dataObj = null;
+        var domControlObj = null;
+
+        var clientInput = $("#client_input");
+        var placeholder = $("#placeholder");
+        var pageSize = 6;
+        var nameCut = 6;
+        var totalNum = 0;
+
+        //焦点移动类
+        function FocusMove() {
+            this.createArea();
+            this.createFunction();
+            this.marqueeName();
+        }
+        FocusMove.prototype = {
+            createArea: function(){
+                //@ Array(上、左、下、右)
+                //@ area.stablemoveindex("fromIndex-toId>toIndex")
+                area0 = WkEpg.AreaCreator(4, 8, [-1, -1, 1, -1], "area0_item_", "className:item_focus", "className:");
+                area0.stablemoveindex = ["0-0>0", -1, "24-1>0,25-1>1,26-1>2,27-1>3,28-2>0,29-2>0,30-2>1,31-2>1", "7-3>0,15-3>0,23-3>0,31-3>3"];
+
+                area1 = WkEpg.AreaCreator(1, 4, [0, -1, -1, 2], "area1_item_", "className:item_focus", "className:");
+                area1.stablemoveindex = ["0-0>24,1-0>25,2-0>26,3-0>27", -1, -1, "3-2>0"];
+
+                area2 = WkEpg.AreaCreator(1, 2, [0, 1, -1, -1], "area2_item_", "className:item_focus", "className:");
+                area2.stablemoveindex = ["0-0>28,1-0>30", "0-1>3", -1, "0-3>3"];
+
+                area3 = WkEpg.AreaCreator(2, 3, [-1, 0, -1, -1], "area3_item_", "className:item item_focus", "className:item");
+                area3.stablemoveindex = [-1, "0-0>7,3-0>31", -1, -1];
+
+                pageobj = WkEpg.PageCreator(areaid, indexid, new Array(area0, area1, area2, area3));
+
+                area3.setendwiseCrossturnpage(true);
+                area3.curpage = 1;
+            },
+            createFunction: function () {
+                area0.areaOkEvent = function(){
+                    clientInput.show();
+                    placeholder.hide();
+
+                    if(WkEpg.Util.getStrRealLen(clientInput.html()) <= 30) {
+                        switch (this.curindex) {
+                            case 0:
+                                clientInput.append("A");
+                                break;
+                            case 1:
+                                clientInput.append("B");
+                                break;
+                            case 2:
+                                clientInput.append("C");
+                                break;
+                            case 3:
+                                clientInput.append("D");
+                                break;
+                            case 4:
+                                clientInput.append("E");
+                                break;
+                            case 5:
+                                clientInput.append("1");
+                                break;
+                            case 6:
+                                clientInput.append("2");
+                                break;
+                            case 7:
+                                clientInput.append("3");
+                                break;
+                            case 8:
+                                clientInput.append("F");
+                                break;
+                            case 9:
+                                clientInput.append("G");
+                                break;
+                            case 10:
+                                clientInput.append("H");
+                                break;
+                            case 11:
+                                clientInput.append("I");
+                                break;
+                            case 12:
+                                clientInput.append("J");
+                                break;
+                            case 13:
+                                clientInput.append("4");
+                                break;
+                            case 14:
+                                clientInput.append("5");
+                                break;
+                            case 15:
+                                clientInput.append("6");
+                                break;
+                            case 16:
+                                clientInput.append("K");
+                                break;
+                            case 17:
+                                clientInput.append("L");
+                                break;
+                            case 18:
+                                clientInput.append("M");
+                                break;
+                            case 19:
+                                clientInput.append("N");
+                                break;
+                            case 20:
+                                clientInput.append("O");
+                                break;
+                            case 21:
+                                clientInput.append("7");
+                                break;
+                            case 22:
+                                clientInput.append("8");
+                                break;
+                            case 23:
+                                clientInput.append("9");
+                                break;
+                            case 24:
+                                clientInput.append("P");
+                                break;
+                            case 25:
+                                clientInput.append("Q");
+                                break;
+                            case 26:
+                                clientInput.append("R");
+                                break;
+                            case 27:
+                                clientInput.append("S");
+                                break;
+                            case 28:
+                                clientInput.append("T");
+                                break;
+                            case 29:
+                                clientInput.append("U");
+                                break;
+                            case 30:
+                                clientInput.append("V");
+                                break;
+                            case 31:
+                                clientInput.append("0");
+                                break;
+                        }
+                    }
+
+                    var clientInputStr = clientInput.html();
+                    //执行搜索
+                    area3.curpage = 1;
+                    dataObj.loadSearchResult(clientInputStr);
+                }
+                area1.areaOkEvent = function(){
+                    clientInput.show();
+                    placeholder.hide();
+
+                    if(WkEpg.Util.getStrRealLen(clientInput.html()) <= 15) {
+                        switch (this.curindex) {
+                            case 0:
+                                clientInput.append("W");
+                                break;
+                            case 1:
+                                clientInput.append("X");
+                                break;
+                            case 2:
+                                clientInput.append("Y");
+                                break;
+                            case 3:
+                                clientInput.append("Z");
+                                break;
+                        }
+                    }
+
+                    var clientInputStr = clientInput.html();
+                    //执行搜索
+                    area3.curpage = 1;
+                    dataObj.loadSearchResult(clientInputStr);
+                }
+                area2.areaOkEvent = function() {
+                    switch (this.curindex) {
+                        case 0: //清空用户输入
+                            clientInput.html("");
+                            dataObj.loadSearchResult("");
+                            break;
+                        case 1: //删除用户最后输入字符
+                            var clientInputStr = clientInput.html();
+                            clientInputStr = clientInputStr.slice(0,clientInputStr.length-1);
+                            clientInput.html(clientInputStr);
+                            dataObj.loadSearchResult(clientInputStr);
+                            break;
+                    }
+                }
+                area3.areaPageTurnEvent = function (num) {
+                    if (this.pagecount <= 1) {
+                        return;
+                    }
+                    this.lock = false;
+                    dataObj.loadSearchResult(clientInput.html());
+                };
+
+                WkEpg.Nav.keyBackEvent = function() {
+                    var inner = clientInput.html();
+                    if(inner != ''){
+                        inner = inner.substr(0, inner.length-1);
+                        if(inner == ""){
+//                            window.location.href = url;
+                            if(pageobj.curareaid == 3){
+                                pageobj.changefocus(0,0);
+                            }
+                        }
+                        clientInput.html(inner);
+                        area3.curpage = 1;
+                        dataObj.loadSearchResult(inner);
+                    }
+                    else WkEpg.Util.gotoPage(returnurl);
+                };
+            },
+            marqueeName: function () {
+                area3.changefocusAfterEvent = function() {
+                    if (this.doms[this.curindex] != undefined && WkEpg.Util.getStrRealLen(this.doms[this.curindex].contentName) > nameCut * 2)
+                        $("#area3_txt_" + this.curindex).html("<marquee direction='left' scrolldelay='100'>" + this.doms[this.curindex].contentName + "</marquee>");
+                };
+                area3.changeunfocusBeforeEvent = function() {
+                    if (this.doms[this.curindex] != undefined && WkEpg.Util.getStrRealLen(this.doms[this.curindex].contentName) > nameCut * 2)
+                        $("#area3_txt_" + this.curindex).html(WkEpg.Util.getSubStr(this.doms[this.curindex].contentName, nameCut * 2, true));
+                };
+                if (pageobj.curareaid == 3)
+                    pageobj.areas[pageobj.curareaid].changefocusAfterEvent();
+            }
+        };
+
+        //Dom操作类 页面滑动 轮播
+        function DomControl() {
+        }
+        DomControl.prototype = {
+            renderSearch: function(data) {
+                $('#result_remind').hide();
+                $('#result_text').show();
+                $('#special_str').html(clientInput.html())
+                $('#special_num').html(totalNum);
+
+                area3.datanum = data.length;
+
+                for(var i = 0; i < pageSize; i++) {
+                    if(i < data.length) {
+                        area3.doms[i].contentName = data[i]["name"];
+                        $("#area3_pic_"+ i ).attr("src", STATIC_RESOUCE_URL + data[i]["posters"]["vertical"]);
+                        $("#area3_txt_"+ i ).html(WkEpg.Util.getSubStr(data[i]["name"], nameCut * 2, true));
+                        area3.doms[i].mylink = "detail.html?programid=" + data[i].id + "&returnurl="+ encodeURIComponent(url);
+                        $('#area3_item_' + i).show();
+                    } else {
+                        $('#area3_item_' + i).hide();
+                    }
+                }
+                $('#result_title').show();
+                this.costScroll();
+
+                focusObj.marqueeName();
+            },
+            //计算滚动条长度，改变滚动条的位置
+            costScroll: function () {
+                if(area3.pagecount>1){
+                    var scrollsH = parseInt($('#scroll_bar').css('height'))/area3.pagecount - 20;
+                    $('.scrolls .scroll_1').css('height', scrollsH);
+                    totalScroll = parseInt($('#scroll_bar').css('height'))-parseInt($('.scrolls').css('height')) - 20;
+                    perScroll = totalScroll/(area3.pagecount-1);
+                    this.perScroll = perScroll;
+                    var top = (area3.curpage - 1) * this.perScroll + 10;
+                    $('.scrolls').css('transition', 'top 200ms');
+                    $('.scrolls').css('top', top);
+                    $('#scroll_box').show();
+                    $('.arrow_control').show();
+                }else{
+                    $('#scroll_box').hide();
+                    $('.arrow_control').hide();
+                }
+            },
+        };
+
+        //加载数据的类
+        function loadData() {
+            this.pageSize = 6;
+            this.getReturnUrl();
+        }
+        loadData.prototype = {
+            loadSearchResult: function(keyword) {
+                pageobj.areas[0].directions = [0, -1, 2, 3];
+                pageobj.areas[2].directions = [1, 2, -1, 3];
+                area2.stablemoveindex = ["0-0>28,1-0>30", "0-1>3", -1, "0-3>3"];
+                $.ajax({
+                    url: API_URL + "/search",
+                    type: "get",
+                    data: {
+                        "keyword": keyword.toLowerCase(),
+                        "pageSize": 6,
+                        "page": area3.curpage
+                    },
+                    dataType: "json",
+                    success: function(res) {
+                        totalNum = res.meta.pagination.total;
+                        area3.pagecount = res.meta.pagination.total_pages;
+                        domControlObj.renderSearch(res.data);
+                    }
+                })
+            },
+            getReturnUrl : function(areaid, indexid) {
+                if (url.indexOf('?') > 0) {
+                    return url.split('?')[0]+"?returnurl=" + encodeURIComponent(returnurl)+"&areaid="+areaid+"&indexid="+indexid;
+                } else {
+                    return url+"?returnurl=" + encodeURIComponent(returnurl)+"&areaid="+areaid+"&indexid="+indexid;
+                };
+            }
+        };
+
+        //初始化
+        window.addEventListener("unload", function() {
+        }, false);
+        window.addEventListener("load", function() {
+            window.focus();
+            if (!focusObj) focusObj = new FocusMove();
+            if (!domControlObj) domControlObj = new DomControl();
+            if (!dataObj) dataObj = new loadData();
+        }, false);
+    })(window, document);
+</script>
+</body>
+</html>

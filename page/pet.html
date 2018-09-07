@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>爱宠小屋</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            background: url("../images/pet/pet_bg.jpg") no-repeat;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: Microsoft YaHei;
+        }
+        img{
+            vertical-align: middle;
+        }
+        .item,
+        .area,
+        .pic,
+        .txt,
+        .select,
+        .data_box,
+        .shop_box,
+        .exchange,
+        .price,
+        .icon{
+            position: absolute;
+        }
+
+        .data_box{
+            width:476px;
+            height:321px;
+            background: url("../images/pet/data_bg.png");
+            left:39px;
+            top:152px;
+        }
+        .total_box{
+            position: absolute;
+            left:24px;
+            top:41px;
+            width:429px;
+            height:36px;
+            line-height:36px;
+            padding:0 24px;
+            font-size:22px;
+            color:#FFCC00;
+            background-color: #6B381D;
+            border-radius: 15px;
+        }
+        .data_detail{
+            position: absolute;
+            left:33px;
+            top:91px;
+        }
+        .data_detail .line{
+            width:411px;
+            height:41px;
+            line-height:39px;
+            padding: 0 0 0 24px;
+            border-bottom: 2px solid #AD8155;
+            font-size:22px;
+        }
+        .data_detail .line_last{
+            border-bottom: none;
+            line-height:41px;
+        }
+        .data_detail .line .cont{
+            width:286px;
+            height:39px;
+            display: inline-block;
+        }
+        .data_detail .line .bean{
+            width:101px;
+            height:39px;
+            padding:0 0 0 29px;
+            background: url("../images/pet/icon_bean_sm.png") no-repeat 0 center;
+            color: #FFFC00;
+            display: inline-block;
+        }
+        .bean_num{
+            width:416px;
+            height:51px;
+            padding:0 0 0 18px;
+            position: absolute;
+            left:31px;
+            top:231px;
+            font-size:22px;
+            border: 3px solid #834E00;
+            background-color: #96613A;
+            border-radius: 18px;
+        }
+        #total_bean{
+            display: inline-block;
+            height:51px;
+            line-height:51px;
+            padding:0 0 0 45px;
+            background: url("../images/pet/icon_bean_bg.png") no-repeat 5px center;
+        }
+
+        .shop_box{
+            left:48px;
+            top:462px;
+        }
+        .shop_title{
+            left:41px;
+        }
+        .shop_content{
+            top:88px;
+            width:448px;
+            height:424px;
+            background: url("../images/pet/shop_content_bg.png");
+        }
+        .content_title{
+            width:402px;
+            height:50px;
+            text-align: center;
+            line-height:50px;
+            font-size:24px;
+            position: absolute;
+            left:24px;
+            top:22px;
+        }
+        .area_0 .item{
+            width:398px;
+            height:96px;
+            background: url("../images/pet/goods_bg.png");
+        }
+        .area_0 .item .txt{
+            left:102px;
+            top:10px;
+            height:32px;
+            line-height:32px;
+            width:250px;
+            font-size:22px;
+            color:#95250D;
+        }
+        .area_0 .item .price {
+            left:96px;
+            top:53px;
+            width:108px;
+            height:31px;
+            line-height:30px;
+            padding:0 0 0 36px;
+            background: url("../images/pet/icon_bean_sm.png") no-repeat 10px center #7F2D00;
+            border-radius: 14px;
+            font-size:22px;
+        }
+        .area_0 .item .exchange{
+            left:279px;
+            top:41px;
+        }
+        .arrow_down{
+            width:33px;
+            height:18px;
+            position: absolute;
+            left:212px;
+            top:386px;
+            background-image: none;
+        }
+    </style>
+</head>
+<body bgcolor="transparent">
+<div id="body_area">
+    <!--标题和人物-->
+    <div class="character">
+        <div class="pic" style="left: 122px;"><img src="../images/pet/title.png" alt=""></div>
+        <div class="item" style="left: 904px;top: 407px;">
+            <div class="pic" style="left: 84px;"><img src="../images/pet/message.png" alt=""></div>
+            <div class="pic" style="top: 120px;">
+                <!--<img src="../images/pet/lovepet.png" alt="">-->
+                <canvas id="pet" width="422" height="446"></canvas>
+                <!--<div id="mypet"></div>-->
+            </div>
+        </div>
+    </div>
+    <!--数据-->
+    <div class="data_box">
+        <div class="total_box">
+            <div class="txt" style="width: 160px;">累计登录：<span id="total_log">3天</span></div>
+            <div class="txt" style="left: 180px;text-align:right;width:220px">累计观看：<span id="total_watch">200分钟</span></div>
+        </div>
+        <div class="data_detail">
+            <div class="line line_0"><span class="cont">今天登录：1次</span><span class="bean">+1</span></div>
+            <div class="line line_1"><span class="cont">今天观看：20分钟</span><span class="bean">+5</span></div>
+            <div class="line line_2 line_last"><span class="cont">额外奖励：参加活动1次</span><span class="bean">+1000</span></div>
+        </div>
+        <div class="bean_num">小主人！你总共获得<span id="total_bean">1000</span>颗学豆</div>
+    </div>
+    <!--礼品屋-->
+    <div class="shop_box">
+        <div class="item shop_title" style="left: 41px;"><img src="../images/pet/shop_title_bg.png" alt=""></div>
+        <div class="item shop_content">
+            <div class="content_title">小宝贝！快用学豆兑换礼品哟</div>
+            <div class="area area_0">
+                <div class="item" style="left: 26px;top: 72px;" id="area0_item_0">
+                    <div class="icon" style="left: 15px;top: 9px;"><img id="area0_pic_0" src="../images/pet/icon_0.png" alt=""></div>
+                    <div class="txt" id="area0_txt_0">爱宠小喵的粮食</div>
+                    <div class="price" id="area0_price_0">x10</div>
+                    <div class="exchange">
+                        <div class="no_select"><img src="../images/pet/btn_exchange.png" alt=""></div>
+                        <div class="select"><img src="../images/pet/btn_exchange_s.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="item" style="left: 26px;top: 179px;" id="area0_item_1">
+                    <div class="icon" style="left: 21px;top: 12px;"><img id="area0_pic_1" src="../images/pet/icon_1.png" alt=""></div>
+                    <div class="txt" id="area0_txt_1">爱宠小喵皮肤套装</div>
+                    <div class="price" id="area0_price_1">x60</div>
+                    <div class="exchange">
+                        <div class="no_select"><img src="../images/pet/btn_exchange.png" alt=""></div>
+                        <div class="select"><img src="../images/pet/btn_exchange_s.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="item" style="left: 26px;top: 286px;" id="area0_item_2">
+                    <div class="icon" style="left: 16px;top: 11px;"><img id="area0_pic_2" src="../images/pet/icon_2.png" alt=""></div>
+                    <div class="txt" id="area0_txt_2">美吉姆艺术课程</div>
+                    <div class="price" id="area0_price_2">x1000</div>
+                    <div class="exchange">
+                        <div class="no_select"><img src="../images/pet/btn_exchange.png" alt=""></div>
+                        <div class="select"><img src="../images/pet/btn_exchange_s.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="arrow_down">
+                    <div class="no_select"><img src="../images/pet/icon_down.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/WkEpg3.0.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/konva.min.js"></script>
+<script>
+    var pageobj;
+    (function(window, document) {
+        var area0;
+        var url = window.location.href;
+        var indexid = !WkEpg.Util.getURLParameter("indexid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("indexid", url)); //焦点数据
+        var areaid = !WkEpg.Util.getURLParameter("areaid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("areaid", url));    //焦点数据
+        var realindex = !WkEpg.Util.getURLParameter("realindex", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("realindex", url));
+        var returnurl = !WkEpg.Util.getURLParameter("returnurl", url) ? "index.html" : decodeURIComponent(WkEpg.Util.getURLParameter("returnurl", url));
+
+        var focusObj = null;
+        var dataObj = null;
+        var controlObj = null;
+        var petTimer = null;
+        var i = 0;
+        var pageSize = 3;
+
+        var testData = {
+            resultSet: [
+                {'title': '爱宠小喵的粮食', 'price': 10, 'imgUrl': '../images/pet/icon_0.png'},
+                {'title': '爱宠小喵皮肤套装', 'price': 60, 'imgUrl': '../images/pet/icon_1.png'},
+                {'title': '美吉姆艺术课程', 'price': 1000, 'imgUrl': '../images/pet/icon_2.png'},
+                {'title': '美吉姆艺术课程', 'price': 1000, 'imgUrl': '../images/pet/icon_2.png'},
+                {'title': '爱宠小喵的粮食', 'price': 10, 'imgUrl': '../images/pet/icon_0.png'},
+                {'title': '爱宠小喵皮肤套装', 'price': 60, 'imgUrl': '../images/pet/icon_1.png'},
+                {'title': '爱宠小喵的粮食', 'price': 10, 'imgUrl': '../images/pet/icon_0.png'},
+            ]
+        }
+
+        //焦点移动类
+        function FocusMove() {
+            this.createArea();
+            this.createFunction();
+        }
+        FocusMove.prototype = {
+            createArea: function(){
+                //@ Array(上、左、下、右)
+                //@ area.stablemoveindex("fromIndex-toId>toIndex")
+                area0 = WkEpg.AreaCreator(3, 1, [-1, -1, -1, -1], "area0_item_", "className:item item_focus", "className:item");
+
+                area0.setendwiseCrossturnpage(true);
+                area0.curpage = 1;
+
+                pageobj = WkEpg.PageCreator(areaid, indexid, new Array(area0));
+            },
+            createFunction: function () {
+                area0.areaOkEvent = function(){
+                };
+                area0.areaPageTurnEvent = function(){
+                    if (this.pagecount <= 1) {
+                        return;
+                    }
+                    this.lock = true;
+                    dataObj.loadGoods();
+
+                };
+                WkEpg.Nav.keyBackEvent = function() {
+                    WkEpg.Util.gotoPage(returnurl);
+                };
+            },
+        };
+
+        //Dom操作类 页面滑动 轮播
+        function DomControl() {
+        }
+        DomControl.prototype = {
+            //用canvas动态的绘制宠物
+            drawPet: function () {
+                var w = 422;
+                var h = 446;
+                var ctx = document.getElementById('pet').getContext('2d');
+                petTimer = setInterval(function(){
+                    ctx.clearRect(0, 0, 422, 446);
+                    if(i < 5){
+                        i++;
+                    }else{
+                        i = 1;
+                    }
+                    var img = new Image();
+                    img.onload = function(){
+                        var imgWidth = img.width/img.height * h;
+                        ctx.drawImage(img, 0, 0, imgWidth, h);
+                    };
+                    img.src = '../images/pet/lovepet' + i +'.png';
+                }, 400);
+
+//                var stage = new Konva.Stage({
+//                    container: 'mypet',
+//                    width: w,
+//                    height: h
+//                });
+//                var layer = new Konva.Layer();
+//                var img1 = new Image();
+//                img1.onload = function(){
+//                    var imgW = img1.width/img1.height * h;
+//                    var image = new Konva.Image({
+//                        x: 0,
+//                        y: 0,
+//                        image: img1,
+//                        width: imgW,
+//                        height: h
+//                    });
+//                    layer.add(image);
+//                    stage.add(layer);
+//                };
+//                img1.src = '../images/pet/lovepet1.png';
+//
+//                var img2 = new Image();
+//                img2.onload = function(){
+//                    var imgW = img2.width/img2.height * h;
+//                    var image = new Konva.Image({
+//                        x: 0,
+//                        y: 0,
+//                        image: img2,
+//                        width: imgW,
+//                        height: h
+//                    });
+//                    layer.add(image);
+//                    var group = new Konva.Group({
+//                        x:0,
+//                        y:0
+//                    });
+//                    group.add(image);
+//                    layer.add(group);
+//                    stage.add(layer);
+//
+//                    var tween = new Konva.Tween({
+//                        node: group,
+//                        duration: 1,
+//                        onFinish: function(){
+//                            this.reset();
+//                            this.play();
+//                        }
+//                    })
+//                    tween.play();
+//                };
+//                img2.src = '../images/pet/lovepet2.png';
+            },
+            renderGoods: function(items){
+                for(var i = 0; i < pageSize; i++){
+                    if(i<area0.datanum){
+                        $('#area0_pic_' + i).attr('src', items[i].imgUrl);
+                        $('#area0_txt_' + i).html(items[i].title);
+                        $('#area0_price_' + i).html('x' + items[i].price);
+                        $('#area0_item_' + i).show();
+                    }
+                    else{
+                        $('#area0_item_' + i).hide();
+                    }
+                }
+                area0.lock = false;
+                area0.pageTurnAndChangeFocus();
+            }
+        };
+
+        //加载数据的类
+        function loadData() {
+            this.pageSize = 3;
+            this.loadGoods();
+            this.getReturnUrl();
+        }
+        loadData.prototype = {
+            loadGoods: function(){
+                var programs = testData.resultSet.slice((area0.curpage -1) * this.pageSize, (area0.curpage -1) * this.pageSize + this.pageSize)
+                area0.pagecount = Math.ceil(testData.resultSet.length / this.pageSize);
+                area0.datanum = programs.length;
+
+                controlObj.renderGoods(programs);
+            },
+            getReturnUrl : function(areaid, indexid) {
+                // realindex = (area1.curpage - 1) * pageSize + indexid;
+                if (url.indexOf('?') > 0) {
+                    return url.split('?')[0] + "?realindex=" + realindex + "&areaid=" + areaid + "&indexid=" + indexid + "&returnurl=" + encodeURIComponent(returnurl);
+                } else {
+                    return url + "?realindex=" + realindex + "&areaid=" + areaid + "&indexid=" + indexid + "&returnurl=" + encodeURIComponent(returnurl);
+                }
+            }
+        };
+
+        //初始化
+        window.addEventListener("unload", function() {
+            clearInterval(petTimer);
+        }, false);
+        window.addEventListener("load", function() {
+            window.focus();
+            if (!focusObj) focusObj = new FocusMove();
+            if (!controlObj) controlObj = new DomControl();
+            if (!dataObj) dataObj = new loadData();
+            controlObj.drawPet();
+        }, false);
+    })(window, document);
+</script>
+</body>
+</html>

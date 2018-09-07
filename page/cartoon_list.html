@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>卡通大咖</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            background: url("../images/cartoon_list/cartoon_bg.jpg") no-repeat;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: Microsoft YaHei;
+        }
+
+        .area,
+        .item,
+        .pic,
+        .txt,
+        .select,
+        .item_bg{
+            position: absolute;
+        }
+
+        .arrow_text{
+            width:200px;
+            height:108px;
+            line-height:41px;
+            position: absolute;
+            left:892px;
+            top:950px;
+            text-align: center;
+            padding-top: 67px;
+            background: url("../images/cartoon_list/arrow_down.png") no-repeat center 0px;
+        }
+    </style>
+</head>
+<body bgcolor="transparent">
+<div id="body_area">
+    <div class="item">
+        <div class="pic" style="left: 640px;top: 53px;"><img src="../images/cartoon_list/cartoon_title1.png" alt=""></div>
+        <!--<div class="pic" style="left: 757px;top: 44px;"><img src="../images/cartoon_list/cartoon_title2.png" alt=""></div>-->
+    </div>
+    <div class="area area_0">
+        <div class="item" id="area0_item_0" style="left: 158px;top: 131px;">
+            <div class="no_select"><img src="../images/cartoon_list/tracker0.png" alt=""></div>
+            <div class="select"><img src="../images/cartoon_list/tracker0_s.png" alt=""></div>
+        </div>
+        <div class="item" id="area0_item_1" style="left: 517px;top: 209px;">
+            <div class="no_select"><img src="../images/cartoon_list/tracker1.png" alt=""></div>
+            <div class="select" style="top: -2px;"><img src="../images/cartoon_list/tracker1_s.png" alt=""></div>
+        </div>
+        <div class="item" id="area0_item_2" style="left: 919px;top: 232px;">
+            <div class="no_select"><img src="../images/cartoon_list/tracker2.png" alt=""></div>
+            <div class="select" style="top: -28px;"><img src="../images/cartoon_list/tracker2_s.png" alt=""></div>
+        </div>
+        <div class="item" id="area0_item_3" style="left: 1281px;top: 167px;">
+            <div class="no_select"><img src="../images/cartoon_list/tracker3.png" alt=""></div>
+            <div class="select" style="top: -36px;"><img src="../images/cartoon_list/tracker3_s.png" alt=""></div>
+        </div>
+        <div class="item" id="area0_item_4" style="left: 158px;top: 483px;">
+            <div class="no_select"><img src="../images/cartoon_list/tracker4.png" alt=""></div>
+            <div class="select" style="top: -36px;"><img src="../images/cartoon_list/tracker4_s.png" alt=""></div>
+        </div>
+        <div class="item" id="area0_item_5" style="left: 527px;top: 530px;">
+            <div class="no_select"><img src="../images/cartoon_list/tracker5.png" alt=""></div>
+            <div class="select" style="top: -26px;"><img src="../images/cartoon_list/tracker5_s.png" alt=""></div>
+        </div>
+        <div class="item" id="area0_item_6" style="left: 911px;top: 556px;">
+            <div class="no_select"><img src="../images/cartoon_list/tracker6.png" alt=""></div>
+            <div class="select" style="top: -50px;"><img src="../images/cartoon_list/tracker6_s.png" alt=""></div>
+        </div>
+        <div class="item" id="area0_item_7" style="left: 1280px;top: 494px;">
+            <div class="no_select"><img src="../images/cartoon_list/tracker7.png" alt=""></div>
+            <div class="select" style="top: -58px;"><img src="../images/cartoon_list/tracker7_s.png" alt=""></div>
+        </div>
+    </div>
+    <!--向下箭头-->
+    <div class="arrow_text">往下查看更多专题</div>
+</div>
+<script type="text/javascript" src="../js/WkEpg3.0.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    var pageobj;
+    (function(window, document) {
+        var area0;
+        var url = window.location.href;
+        var indexid = !WkEpg.Util.getURLParameter("indexid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("indexid", url)); //焦点数据
+        var areaid = !WkEpg.Util.getURLParameter("areaid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("areaid", url));    //焦点数据
+        var returnurl = !WkEpg.Util.getURLParameter("returnurl", url) ? "index.html" : decodeURIComponent(WkEpg.Util.getURLParameter("returnurl", url));
+
+        var focusObj = null;
+        var dataObj = null;
+        var controlObj = null;
+
+        var programs = {};
+        var pageSize = 10;
+        var nameCut = 7;
+
+        //焦点移动类
+        function FocusMove() {
+            this.createArea();
+            this.createFunction();
+        }
+        FocusMove.prototype = {
+            createArea: function(){
+                //@ Array(上、左、下、右)
+                //@ area.stablemoveindex("fromIndex-toId>toIndex")
+                area0 = WkEpg.AreaCreator(2, 4, [-1, -1, -1, -1], "area0_item_", "className:item item_focus", "className:item");
+
+                pageobj = WkEpg.PageCreator(areaid, indexid, new Array(area0));
+            },
+            createFunction: function () {
+                area0.areaOkEvent = function() {
+                    window.location.href = "star_list.html?starbgIndex=" + this.curindex + "&returnurl="+ encodeURIComponent(dataObj.getReturnUrl(0, this.curindex));
+                };
+
+                WkEpg.Nav.keyBackEvent = function() {
+                    WkEpg.Util.gotoPage(returnurl);
+                };
+            },
+        };
+
+        //Dom操作类 页面滑动 轮播
+        function DomControl() {
+        }
+        DomControl.prototype = {
+        };
+
+        //加载数据的类
+        function loadData() {
+            this.getReturnUrl();
+        }
+        loadData.prototype = {
+            getReturnUrl : function(areaid, indexid) {
+                if (url.indexOf('?') > 0) {
+                    return url.split('?')[0]+"?returnurl=" + encodeURIComponent(returnurl)+"&areaid="+areaid+"&indexid="+indexid;
+                } else {
+                    return url+"?returnurl=" + encodeURIComponent(returnurl)+"&areaid="+areaid+"&indexid="+indexid;
+                };
+            }
+        }
+
+        //初始化
+        window.addEventListener("unload", function() {
+        }, false);
+        window.addEventListener("load", function() {
+            window.focus();
+            if (!focusObj) focusObj = new FocusMove();
+            if (!controlObj) controlObj = new DomControl();
+            if (!dataObj) dataObj = new loadData();
+        }, false);
+    })(window, document);
+</script>
+</body>
+</html>

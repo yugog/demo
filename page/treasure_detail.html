@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宝藏 - 详情页</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            background: url("../images/treasure_detail/treasure_detail_bg.jpg") no-repeat;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: Microsoft YaHei;
+        }
+        .area,
+        .item,
+        .pic,
+        .txt,
+        .select{
+            position: absolute;
+        }
+
+        .dark{
+            position: absolute;
+            width:1920px;
+            height:1080px;
+            background: url("../images/treasure_detail/dark_bg.png");
+        }
+
+        .wrapper{
+            top:74px;
+            width:1300px;
+            height:721px;
+            border:9px solid #81511C;
+            background-color: #D5A95F;
+            border-radius:22px;
+        }
+
+        .area1{
+            width:1124px;
+            height:65px;
+        }
+        .area1 .item{
+            width:207px;
+            height:57px;
+            text-align: center;
+            color: #7B4A15;
+            font-size:40px;
+            line-height:55px;
+        }
+        .area1 .item_focus{
+            background-color: #81511C;
+            color: #fff;
+            border-radius: 25px 25px 0 0;
+        }
+        .area1_border{
+            width:1124px;
+            height:8px;
+            background-color: #B28850;
+            border-radius:3px;
+            position: absolute;
+            top:57px;
+        }
+        .area2 .item{
+            width:133px;
+            height:113px;
+            background: url("../images/treasure_detail/num_bg.png");
+        }
+        .area2 .item .txt{
+            width:133px;
+            height:113px;
+            text-align: center;
+            line-height:113px;
+            font-size:26px;
+        }
+        .area2 .item .txt span{
+            font-size:30px;
+        }
+        .area2 .item .select{
+            width:133px;
+            height:113px;
+            border: 7px solid #fff;
+        }
+        .area2 .item .box_s{
+            position: absolute;
+            left:-26px;
+            top:75px;
+        }
+        .area2 .item .has{
+            color:#FFC600;
+            font-size:16px;
+            line-height:20px;
+            position: absolute;
+            left:32px;
+            top:79px;
+        }
+
+        .abilities>.item{
+            font-size:32px;
+            color:#793E1B;
+        }
+        .abilities>.item>.txt{
+            width:96px;
+            line-height:42px;
+            top:0;
+        }
+        .zhili{
+            top:71px;
+        }
+        .zhili .ability{
+            color:#00A0EA;
+            border-color: #00A0EA;
+        }
+        .zhili .progress{
+            background-color:#00A0EA;
+        }
+        .caiyi{
+            top:199px;
+        }
+        .caiyi .ability{
+            color: #EB6876;
+            border-color: #EB6876;
+        }
+        .caiyi .progress{
+            background-color:#EB6876;
+        }
+        .huoli{
+            top:325px;
+        }
+        .huoli .ability{
+            color: #51C100;
+            border-color:#51C100;
+        }
+        .huoli .progress{
+            background-color:#51C100;
+        }
+        .progress_box{
+            position: absolute;
+            left:96px;
+            width:372px;
+            height:42px;
+            background-color: #59493F;
+            border-radius:21px;
+            padding: 4px;
+        }
+        .progress{
+            width:364px;
+            height:34px;
+            border-radius:17px;
+        }
+        .ability{
+            position: absolute;
+            top:57px;
+            width:101px;
+            height: 43px;
+            text-align: center;
+            line-height:30px;
+            border:5px solid #00A0EA;
+            border-radius:20px;
+            background-color: #fff;
+            font-size:30px;
+        }
+        .ab_a{
+            left:132px;
+        }
+        .ab_b{
+            left:248px;
+        }
+
+        .area0 .item .select{
+            width:261px;
+            height:87px;
+            border:5px solid #fff;
+            border-radius: 36px;
+        }
+        .area3 .item .select{
+            width:233px;
+            height:64px;
+            border: 5px solid #fff;
+            border-radius:32px;
+        }
+    </style>
+</head>
+<body bgcolor="transparent">
+<div id="body_area">
+    <div class="detail">
+        <div class="pic" style="left: 938px;top: 752px;"><img src="../images/treasure_detail/box.png" alt=""></div>
+        <div class="pic" style="left: 1265px;top: 90px;"><img src="../images/treasure_detail/target.png" alt=""></div>
+        <div class="item abilities" style="left: 1318px;top: 395px;width:500px;">
+            <div class="txt" style="color:#732A00;font-size: 34px;font-weight: bold;line-height:36px;">观看后将获得以下能力的提升：</div>
+            <div class="item zhili">
+                <div class="txt">智力：</div>
+                <div class="progress_box">
+                    <div class="progress" style="width: 90%;"></div>
+                </div>
+                <div class="ability ab_a">英语</div>
+                <div class="ability ab_b">口语</div>
+            </div>
+            <div class="item caiyi">
+                <div class="txt">才艺：</div>
+                <div class="progress_box">
+                    <div class="progress" style="width: 75%;"></div>
+                </div>
+                <div class="ability ab_a">英语</div>
+                <div class="ability ab_b">口语</div>
+            </div>
+            <div class="item huoli">
+                <div class="txt">活力：</div>
+                <div class="progress_box">
+                    <div class="progress" style="width: 60%;"></div>
+                </div>
+                <div class="ability ab_a">勇气</div>
+                <div class="ability ab_b">探索</div>
+            </div>
+        </div>
+        <div class="area area0">
+            <div class="item" id="area0_item_0" style="left: 1306px;top: 864px;">
+                <div class="pic"><img src="../images/treasure_detail/btn_start.png" alt=""></div>
+                <div class="select"><img src="../images/treasure_detail/btn_start_s.png" alt=""></div>
+            </div>
+            <div class="item" id="area0_item_1" style="left: 1581px;top: 864px;">
+                <div class="pic"><img src="../images/treasure_detail/btn_choose.png" alt=""></div>
+                <div class="select"><img src="../images/treasure_detail/btn_choose_s.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <div class="dark" style="display: none;"></div>
+    <div class="area window" id="window" style="left: 353px;top: 112px;display: none;">
+        <div class="title item" style="left: 443px;"><img src="../images/treasure_detail/choose_title.png" alt=""></div>
+        <div class="area wrapper">
+            <div class="area area1" style="left: 79px;top: 70px;">
+                <div class="item" id="area1_item_0" style="left: 142px;">1-12</div>
+                <div class="item" id="area1_item_1" style="left: 437px;">13-24</div>
+                <div class="item" id="area1_item_2" style="left: 745px;">25-36</div>
+                <div class="area1_border"></div>
+            </div>
+            <div class="area area2" style="left: 108px;top: 175px;">
+                <!--第一行-->
+                <div class="item" id="area2_item_0" style="left: 24px;">
+                    <div class="txt"><span>01</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_1" style="left: 197px;">
+                    <div class="txt"><span>02</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_2" style="left: 376px;">
+                    <div class="txt"><span>03</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_3" style="left: 551px;">
+                    <div class="txt"><span>04</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_4" style="left: 730px;">
+                    <div class="txt"><span>05</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_5" style="left: 906px;">
+                    <div class="txt"><span>06</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <!--第二行-->
+                <div class="item" id="area2_item_6" style="left: 24px;top: 163px;">
+                    <div class="txt"><span>01</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_7" style="left: 197px;top: 163px;">
+                    <div class="txt"><span>02</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_8" style="left: 376px;top: 163px;">
+                    <div class="txt"><span>03</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_9" style="left: 551px;top: 163px;">
+                    <div class="txt"><span>04</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_10" style="left: 730px;top: 163px;">
+                    <div class="txt"><span>05</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_11" style="left: 906px;top: 163px;">
+                    <div class="txt"><span>06</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <!--第三行-->
+                <div class="item" id="area2_item_12" style="left: 24px;top: 323px;">
+                    <div class="txt"><span>01</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_13" style="left: 197px;top: 323px;">
+                    <div class="txt"><span>02</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_14" style="left: 376px;top: 323px;">
+                    <div class="txt"><span>03</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_15" style="left: 551px;top: 323px;">
+                    <div class="txt"><span>04</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_16" style="left: 730px;top: 323px;">
+                    <div class="txt"><span>05</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+                <div class="item" id="area2_item_17" style="left: 906px;top: 323px;">
+                    <div class="txt"><span>06</span>关</div>
+                    <div class="has">含任务宝箱</div>
+                    <div class="select"></div>
+                    <div class="box_s"><img src="../images/treasure_detail/box_s.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="area area3">
+            <div class="item" id="area3_item_0" style="left: 534px;top: 811px;">
+                <div class="pic"><img src="../images/treasure_detail/btn_back.png" alt=""></div>
+                <div class="select"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/WkEpg3.0.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    var pageobj;
+    (function(window, document) {
+        var area0, area1, area2, area3;
+        var url = window.location.href;
+        var indexid = !WkEpg.Util.getURLParameter("indexid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("indexid", url)); //焦点数据
+        var areaid = !WkEpg.Util.getURLParameter("areaid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("areaid", url));    //焦点数据
+        var returnurl = !WkEpg.Util.getURLParameter("returnurl", url) ? "index.html" : decodeURIComponent(WkEpg.Util.getURLParameter("returnurl", url));
+
+        var focusObj = null;
+        var dataObj = null;
+        var controlObj = null;
+
+        var testData = {
+            count:76,
+            resultSet: [
+                {hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},
+                {hasBox: 0},{hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},{hasBox: 1},
+                {hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 1},{hasBox: 0},{hasBox: 1},
+                {hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},
+                {hasBox: 1},{hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},{hasBox: 0},
+                {hasBox: 0},{hasBox: 1},{hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},
+                {hasBox: 1},{hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},{hasBox: 0},
+                {hasBox: 1},{hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},{hasBox: 0},
+                {hasBox: 0},{hasBox: 1},{hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},
+                {hasBox: 1},{hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},{hasBox: 0},
+                {hasBox: 1},{hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},{hasBox: 0},
+                {hasBox: 1},{hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0},{hasBox: 0},
+                {hasBox: 1},{hasBox: 0},{hasBox: 1},{hasBox: 0}
+            ]
+        }
+        var pointSize = 18;
+        var pointGroupSize = 3;
+        var openFlag = false;
+
+        //焦点移动类
+        function FocusMove() {
+            this.createArea();
+            this.createFunction();
+        }
+        FocusMove.prototype = {
+            createArea: function(){
+                //@ Array(上、左、下、右)
+                //@ area.stablemoveindex("fromIndex-toId>toIndex")
+                area0 = WkEpg.AreaCreator(1, 2, [-1, -1, -1, -1], "area0_item_", "className:item item_focus", "className:item");
+                area1 = WkEpg.AreaCreator(1, 3, [-1, -1, 2, -1], "area1_item_", "className:item item_focus", "className:item");
+                area2 = WkEpg.AreaCreator(3, 6, [1, -1, 3, -1], "area2_item_", "className:item item_focus", "className:item");
+                area3 = WkEpg.AreaCreator(1, 1, [2, -1, -1, -1], "area3_item_", "className:item item_focus", "className:item");
+
+                pageobj = WkEpg.PageCreator(areaid, indexid, new Array(area0, area1, area2, area3));
+
+                area1.setbroadwiseCrossturnpage(true);//横向翻页
+                area1.curpage = 1;
+
+                area2.curpage = 1;
+            },
+            createFunction: function () {
+                area0.areaOkEvent = function(){
+                    switch (this.curindex){
+                        case 0:
+                            break;
+                        case 1:
+                            $('.dark').show();
+                            $('#window').show();
+                            pageobj.changefocus(1,0);
+                            openFlag = true;
+                            break;
+                    }
+                };
+                area1.areaOkEvent = function () {
+                    area2.curpage = (area1.curindex + 1) + (area1.curpage - 1) * pointGroupSize;
+                    programs = testData.resultSet.slice((area1.curindex + 1) * area1.curpage * pointSize, (area1.curindex + 2) * area1.curpage * pointSize);
+                    controlObj.renderPoints(programs);
+                };
+                area1.areaPageTurnEvent = function(){
+                    if (this.pagecount <= 1) {
+                        return;
+                    }
+                    this.lock = true;
+
+                    controlObj.renderPointGroup();
+                };
+                area2.areaOkEvent = function(){
+                    if(testData.resultSet[this.curindex].hasBox){
+                        window.location.href = 'treasure_hudong.html?returnurl=' + encodeURIComponent(url);
+                    }
+                };
+                area3.areaOkEvent = function(){
+                    $('.dark').hide();
+                    $('#window').hide();
+                    pageobj.changefocus(0,0);
+                    openFlag = false;
+                };
+                WkEpg.Nav.keyBackEvent = function() {
+                    if(openFlag){
+                        $('.dark').hide();
+                        $('#window').hide();
+                        pageobj.changefocus(0,0);
+                        openFlag = false;
+                    }
+                    else WkEpg.Util.gotoPage(returnurl);
+                };
+
+                area1.changefocusAfterEvent = function(){
+                    this.ok();
+                }
+            },
+        };
+
+        //Dom操作类 页面滑动 轮播
+        function DomControl() {
+            this.pointSize = 18;
+            this.pointGroupSize = 3;
+            this.count = testData.count;
+        }
+        DomControl.prototype = {
+            renderPointGroup: function(){
+                if(area1.curpage == area1.pagecount){
+                    area1.datanum = area2.pagecount % this.pointGroupSize;
+                    area1.datanum = area1.datanum == 0 ? this.pointGroupSize : area1.datanum;
+                }else{
+                    area1.datanum = this.pointGroupSize;
+                }
+                for(var i = 0; i < this.pointGroupSize; i++ ){
+                    if(i < area1.datanum){
+                        var lastNum = area1.curpage == area1.pagecount && (i == area1.datanum - 1) ? this.count : (i + 1) * this.pointSize +  (area1.curpage - 1) * this.pointGroupSize * this.pointSize;
+                        $("#area1_item_"+ i).html(i * this.pointSize + 1 + (area1.curpage - 1) * this.pointSize * this.pointGroupSize + "-" + lastNum);
+                        $("#area1_item_" + i).show();
+                    }else{
+                        $("#area1_item_" + i).hide();
+                    }
+                }
+                area1.lock = false;
+            },
+            renderPoints: function(items){
+                if(area2.curpage == area2.pagecount) {
+                    area2.datanum = this.count % this.pointSize;
+                    area2.datanum = area2.datanum == 0 ? this.pointSize : area2.datanum;
+                } else {
+                    area2.datanum = this.pointSize;
+                }
+                for(var i = 0;i < this.pointSize;i++){
+                    if(i < area2.datanum){
+                        if(items[i].hasBox == 1){
+                            $('#area2_item_' + i).find('.box_s').show();
+                            $('#area2_item_' + i).find('.has').show();
+                        }
+                        else{
+                            $('#area2_item_' + i).find('.box_s').hide();
+                            $('#area2_item_' + i).find('.has').hide();
+                        }
+                        var spanTxt = '';
+                        (i + 1 < 9) && area2.curpage == 1 ? spanTxt = '0' + (i+1) : spanTxt = (area2.curpage - 1) * this.pointSize + i + 1;
+                        $('#area2_item_' + i + ' .txt').find('span').html(spanTxt);
+                        $('#area2_item_' + i).show();
+                    }else{
+                        $('#area2_item_' + i).hide();
+                    }
+                }
+            }
+        };
+
+        //加载数据的类
+        function loadData() {
+            this.loadPoints();
+            this.getReturnUrl();
+        }
+        loadData.prototype = {
+            loadPoints: function () {
+                programs = testData.resultSet.slice((area1.curindex + 1) * (area1.curpage - 1) * pointSize, (area1.curindex + 1) * area1.curpage * pointSize);
+                area1.pagecount = Math.ceil(testData.count/(pointSize * pointGroupSize));
+                area2.datanum = programs.length;
+                area2.pagecount = Math.ceil(testData.count/pointSize);
+
+                controlObj.renderPointGroup();
+                controlObj.renderPoints(programs);
+            },
+            getReturnUrl : function(areaid, indexid) {
+                if (url.indexOf('?') > 0) {
+                    return url.split('?')[0]+"?returnurl=" + encodeURIComponent(returnurl)+"&areaid="+areaid+"&indexid="+indexid;
+                } else {
+                    return url+"?returnurl=" + encodeURIComponent(returnurl)+"&areaid="+areaid+"&indexid="+indexid;
+                };
+            }
+        }
+
+        //初始化
+        window.addEventListener("unload", function() {
+        }, false);
+        window.addEventListener("load", function() {
+            window.focus();
+            if (!focusObj) focusObj = new FocusMove();
+            if (!controlObj) controlObj = new DomControl();
+            if (!dataObj) dataObj = new loadData();
+        }, false);
+    })(window, document);
+</script>
+</body>
+</html>

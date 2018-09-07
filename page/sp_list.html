@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>专题集锦</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            background: url("../images/sp_list/sp_list_bg.jpg") no-repeat;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: Microsoft YaHei;
+        }
+
+        .area,
+        .item,
+        .pic,
+        .txt,
+        .select,
+        .sp_sp,
+        .goto{
+            position: absolute;
+        }
+
+
+        .area_0 .item .pic{
+            width:1201px;
+            height:223px;
+        }
+        .area_0 .item .pic img{
+            width:1201px;
+            height:223px;
+            border-radius: 5px;
+        }
+        .area_0 .item .select{
+            width:1201px;
+            height:223px;
+            border: 5px solid #fff;
+            border-radius: 5px;
+        }
+        .area_0 .area_text{
+            position: absolute;
+            left:863px;
+            top:54px;
+            z-index:5;
+        }
+        .area_0 .area_text .sp_sp{
+            width:63px;
+            text-align: center;
+            height:30px;
+            line-height:24px;
+            border: 3px solid #fff;
+            border-radius: 7px;
+            font-size:20px;
+        }
+        .area_0 .area_text .txt{
+            top:40px;
+            width:320px;
+            text-align: left;
+            height:40px;
+            line-height:40px;
+            font-size:32px;
+        }
+        .area_0 .area_text .goto{
+            top:86px;
+            width:254px;
+            text-align: center;
+            height:36px;
+            line-height:36px;
+            font-size:20px;
+        }
+
+        .arrow_text{
+            width:200px;
+            height:82px;
+            line-height:37px;
+            position: absolute;
+            left:902px;
+            top:966px;
+            text-align: center;
+            padding-top: 45px;
+            background: url("../images/sp_list/arrow_down.png") no-repeat center 0px;
+        }
+    </style>
+</head>
+<body bgcolor="transparent">
+<div id="body_area">
+    <div class="item">
+        <div class="pic" style="left: 681px;"><img src="../images/sp_list/sp_list_title.png" alt=""></div>
+    </div>
+    <div class="area area_0">
+        <div class="item" id="area0_item_0" style="left: 383px;top: 220px;">
+            <div class="pic"><img id="area0_pic_0" src="../images/sp_list/sp0.png" alt=""></div>
+            <div class="area_text">
+                <div class="sp_sp">专题</div>
+                <div class="txt" id="area0_txt_0">京剧猫之乘风破浪</div>
+                <div class="goto">《 点击进入 》</div>
+            </div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area0_item_1" style="left: 383px;top: 470px;">
+            <div class="pic"><img id="area0_pic_1" src="../images/sp_list/sp1.png" alt=""></div>
+            <div class="area_text">
+                <div class="sp_sp">专题</div>
+                <div class="txt" id="area0_txt_1">国漫盛会夏日狂欢季</div>
+                <div class="goto">《 点击进入 》</div>
+            </div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area0_item_2" style="left: 383px;top: 721px;">
+            <div class="pic"><img id="area0_pic_2" src="../images/sp_list/sp2.png" alt=""></div>
+            <div class="area_text">
+                <div class="sp_sp">专题</div>
+                <div class="txt" id="area0_txt_2">注意!前方高萌来袭</div>
+                <div class="goto">《 点击进入 》</div>
+            </div>
+            <div class="select"></div>
+        </div>
+    </div>
+    <!--向下箭头-->
+    <div class="arrow_text">往下查看更多专题</div>
+</div>
+<script type="text/javascript" src="../js/WkEpg3.0.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    var pageobj;
+    (function(window, document) {
+        var area0;
+        var url = window.location.href;
+        var indexid = !WkEpg.Util.getURLParameter("indexid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("indexid", url)); //焦点数据
+        var areaid = !WkEpg.Util.getURLParameter("areaid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("areaid", url));    //焦点数据
+        var returnurl = !WkEpg.Util.getURLParameter("returnurl", url) ? "index.html" : decodeURIComponent(WkEpg.Util.getURLParameter("returnurl", url));
+
+        var focusObj = null;
+        var dataObj = null;
+        var controlObj = null;
+
+        var programs = {};
+        var pageSize = 10;
+        var nameCut = 7;
+
+        //焦点移动类
+        function FocusMove() {
+            this.createArea();
+            this.createFunction();
+        }
+        FocusMove.prototype = {
+            createArea: function(){
+                //@ Array(上、左、下、右)
+                //@ area.stablemoveindex("fromIndex-toId>toIndex")
+                area0 = WkEpg.AreaCreator(3, 1, [-1, -1, -1, -1], "area0_item_", "className:item item_focus", "className:item");
+
+                pageobj = WkEpg.PageCreator(areaid, indexid, new Array(area0));
+            },
+            createFunction: function () {
+
+                WkEpg.Nav.keyBackEvent = function() {
+                    WkEpg.Util.gotoPage(returnurl);
+                };
+            },
+        };
+
+        //Dom操作类 页面滑动 轮播
+        function DomControl() {
+        }
+        DomControl.prototype = {
+        };
+
+        //加载数据的类
+        function loadData() {
+            this.getReturnUrl();
+        }
+        loadData.prototype = {
+            getReturnUrl : function(areaid, indexid) {
+                if (url.indexOf('?') > 0) {
+                    return url.split('?')[0]+"?returnurl=" + encodeURIComponent(returnurl)+"&areaid="+areaid+"&indexid="+indexid;
+                } else {
+                    return url+"?returnurl=" + encodeURIComponent(returnurl)+"&areaid="+areaid+"&indexid="+indexid;
+                };
+            }
+        }
+
+        //初始化
+        window.addEventListener("unload", function() {
+        }, false);
+        window.addEventListener("load", function() {
+            window.focus();
+            if (!focusObj) focusObj = new FocusMove();
+            if (!controlObj) controlObj = new DomControl();
+            if (!dataObj) dataObj = new loadData();
+        }, false);
+    })(window, document);
+</script>
+</body>
+</html>

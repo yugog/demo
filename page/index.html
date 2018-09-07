@@ -1,0 +1,1454 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta name="page-view-size" content="1920*1080" />
+  <meta charset="UTF-8">
+  <title>门户3.0 - 首页</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      width: 1920px;
+      background: #2d3a7e;
+    }
+
+    html {
+      width: 1920px;
+    }
+
+    /*绝对定位*/
+
+    .item,
+    .area,
+    .areas,
+    .pic,
+    .img,
+    .tab,
+    .txt,
+    .navTxt,
+    .icon,
+    .title,
+    .select,
+    .triangle,
+    .rotate,
+    .tab_bg,
+    .tab_select,
+    #body_area {
+      position: absolute;
+    }
+
+    /*主体滑动*/
+
+    #body_area {
+      top: 0px;
+      left: 0px;
+      width: 1920px;
+      height: 4520px;
+      z-index: 0;
+    }
+
+    .areas {
+      left: 85px;
+    }
+
+    .area {}
+
+    .area .item {}
+
+    .area .item .pic,
+    .area .item .pic img {
+      width: inherit;
+      height: inherit;
+      border-radius: 5px;
+    }
+
+    .area .item .select {
+      top: 0px;
+      left: 0px;
+      width: inherit;
+      height: inherit;
+      border: 5px solid #fff;
+      border-radius: 10px;
+    }
+
+    .area_0 .item .select {
+      border: inherit;
+    }
+
+    .area_1 .item {
+      width: 90px;
+      height: 29px;
+      text-align: center;
+    }
+
+    .area_1 .item .icon {
+      display: block;
+      position: relative;
+      margin: 0 auto;
+      bottom: 86px;
+    }
+
+    .area_1 .item .select {
+      top: -4px;
+      left: -6px;
+      box-shadow: 0px 0px 20px 5px #FFFFFF;
+    }
+
+    .area_3 .item .icon {
+      display: block;
+      position: absolute;
+    }
+
+    .area_5 .item_focus .img {
+      display: none;
+    }
+
+    .area_2 .item .txt,
+    .area_4 .item .txt {
+      display: none;
+    }
+
+    /* radius圆角为5 */
+
+    .area_2 .item,
+    .area_4 .item,
+    .area_6 .item,
+    .area_7 .item,
+    .area_8 .item {
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .area_6 .item .txt,
+    .area_7 .item .txt,
+    .area_8 .item .txt {
+      bottom: 0px;
+      width: inherit;
+      height: 63px;
+      line-height: 63px;
+      text-align: center;
+      font-size: 32px;
+    }
+
+    /* 圆角为10 */
+
+    .area_9 .item,
+    .area_10 .item,
+    .area_11 .item,
+    .area_12 .item {
+      padding: 4px;
+      border-radius: 10px;
+    }
+
+    .area_9 .item .select,
+    .area_10 .item .select,
+    .area_11 .item .select,
+    .area_12 .item .select {
+      border: 4px solid #fff;
+    }
+
+    .area_9 .item .txt,
+    .area_10 .item .txt,
+    .area_11 .item .txt,
+    .area_12 .item .txt {
+      width: inherit;
+      height: 38px;
+      bottom: 4px;
+      line-height: 38px;
+      text-align: center;
+    }
+
+    .area_9 .item .txt {
+      background: rgba(52, 54, 109, 0.6);
+    }
+
+    .area_10 .item .txt {
+      background: rgba(214, 112, 155, 0.6);
+    }
+
+    .area_11 .item .txt {
+      background: rgba(67, 151, 151, 0.6);
+    }
+
+    .area_12 .item .txt {
+      background: rgba(79, 183, 71, 0.6);
+    }
+
+
+    /*轮播图模块*/
+
+    #banner_box {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #banner_box .banner {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+    }
+
+    #banner_box .banner img {
+      width: 100%;
+      height: 100%;
+    }
+
+    #banner_tab {
+      position: relative;
+      margin: 0 auto;
+      top: 94%;
+      width: 58px;
+      /*font-size: 0px;*/
+      /*消除全局body字号*/
+    }
+
+    #banner_tab .tab .tab_select {
+      top: 4px;
+      left: 5px;
+      display: none;
+    }
+
+    #banner_tab .cur .tab_select {
+      display: block;
+    }
+
+    /*三角*/
+
+    .triangle {
+      border-bottom: 96px solid transparent;
+      width: 0px;
+      height: 0px;
+      right: 2px;
+      top: 2px;
+    }
+
+    .triangle_0 {
+      border-right: 96px solid #0d9de0
+    }
+
+    .triangle_1 {
+      border-right: 96px solid #f19b20
+    }
+
+    .triangle_2 {
+      border-right: 96px solid #07d887
+    }
+
+    .triangle_3 {
+      border-right: 96px solid #00e8d0
+    }
+
+    .triangle_4 {
+      border-right: 96px solid #b477dc
+    }
+
+    .triangle_5 {
+      border-right: 96px solid #f98160
+    }
+
+    .triangle_6 {
+      border-right: 96px solid #f9bc6b
+    }
+
+    .triangle_7 {
+      border-right: 96px solid #f09ec2
+    }
+
+    /*文字倾斜*/
+
+    .rotate {
+      transform: rotate(45deg)
+    }
+
+
+
+    /*动画*/
+
+    #body_area {
+      transition: top 500ms ease-in-out;
+    }
+
+    /*动态产品图选中样式*/
+
+    .area .item {
+      z-index: 0;
+      transition: all 200ms;
+    }
+
+    .area .item.item_focus {
+      z-index: 20;
+      /*transition: all 0.3s cubic-bezier(0,-0.8,.0,2);*/
+      transition: all 0.3s;
+      box-shadow: 0px 0px 20px 5px #333;
+    }
+
+    .area_5 .item.item_focus,
+    .area_3 .item.item_focus,
+    .area_0 .item.item_focus {
+      box-shadow: inherit;
+    }
+
+    .area_3 .item .select,
+    .area_5 .item .select {
+      border-radius: inherit;
+      border: inherit;
+      opacity: 0.7;
+    }
+
+    .area_2 .item.item_focus:nth-child(1) {
+      left: -20px !important;
+      top: -20px !important;
+      width: 550px !important;
+      height: 353px !important;
+    }
+
+    .area_2 .item.item_focus:nth-child(2) {
+      left: 490px !important;
+      top: -20px !important;
+      width: 831px !important;
+      height: 366px !important;
+    }
+
+    .area_2 .item.item_focus:nth-child(3) {
+      left: 1270px !important;
+      top: -20px !important;
+      width: 497px !important;
+      height: 616px !important;
+    }
+
+    .area_4 .item.item_focus {
+      width: 264px !important;
+      height: 245px !important;
+      top: -10px !important;
+    }
+
+    .area_4 .item.item_focus:nth-child(1) {
+      left: -10px !important;
+    }
+
+    .area_4 .item.item_focus:nth-child(2) {
+      left: 244px !important;
+    }
+
+    .area_4 .item.item_focus:nth-child(3) {
+      left: 497px !important;
+    }
+
+    .area_6 .item.item_focus:nth-child(1) {
+      left: -20px !important;
+      top: -10px !important;
+      width: 911px !important;
+      height: 612px !important;
+    }
+
+    .area_6 .item.item_focus:nth-child(2) {
+      left: 870px !important;
+      top: -10px !important;
+      width: 440px !important;
+      height: 612px !important;
+    }
+
+    .area_7 .item.item_focus:nth-child(1) {
+      left: 1306px !important;
+      top: -10px !important;
+      width: 453px !important;
+      height: 299px !important;
+    }
+
+    .area_7 .item.item_focus:nth-child(2) {
+      left: 1306px !important;
+      top: 290px !important;
+      width: 453px !important;
+      height: 299px !important;
+    }
+
+    .area_8 .item.item_focus {
+      top: 580px !important;
+      width: 453px !important;
+      height: 464px !important;
+    }
+
+    .area_8 .item.item_focus:nth-child(1) {
+      left: -20px !important;
+    }
+
+    .area_8 .item.item_focus:nth-child(2) {
+      left: 422px !important;
+    }
+
+    .area_8 .item.item_focus:nth-child(3) {
+      left: 866px !important;
+    }
+
+    .area_8 .item.item_focus:nth-child(4) {
+      left: 1306px !important;
+    }
+
+    .area_9 .item.item_focus,
+    .area_10 .item.item_focus,
+    .area_11 .item.item_focus,
+    .area_12 .item.item_focus {
+      bottom: -15px !important;
+      width: 312px !important;
+      height: 433px !important;
+    }
+
+    .area_9 .item.item_focus:nth-child(1),
+    .area_10 .item.item_focus:nth-child(1),
+    .area_12 .item.item_focus:nth-child(1) {
+      left: -20px !important;
+      width: 635px !important;
+      height: 415px !important;
+    }
+
+    .area_9 .item.item_focus:nth-child(2),
+    .area_10 .item.item_focus:nth-child(2),
+    .area_12 .item.item_focus:nth-child(2) {
+      left: 590px !important;
+    }
+
+    .area_9 .item.item_focus:nth-child(3),
+    .area_10 .item.item_focus:nth-child(3),
+    .area_12 .item.item_focus:nth-child(3) {
+      left: 896px !important;
+    }
+
+    .area_9 .item.item_focus:nth-child(4),
+    .area_10 .item.item_focus:nth-child(4),
+    .area_12 .item.item_focus:nth-child(4) {
+      left: 1200px !important;
+    }
+
+    .area_11 .item.item_focus:nth-child(1) {
+      left: -10px !important;
+    }
+
+    .area_11 .item.item_focus:nth-child(2) {
+      left: 292px !important;
+    }
+
+    .area_11 .item.item_focus:nth-child(3) {
+      left: 597px !important;
+    }
+
+    .area_11 .item.item_focus:nth-child(4) {
+      left: 900px !important;
+    }
+
+    .area_11 .item.item_focus:nth-child(5) {
+      left: 1204px !important;
+    }
+  </style>
+</head>
+
+<body bgcolor="transparent">
+
+
+
+<div id="loading" style="position: fixed;width: 100%;height: 100%;background: rgba(0,0,0,0.7);z-index: 50;">
+  <div id="animation" style=";margin: 350px auto;z-index: 50;width: 150px;"></div>
+</div>
+
+<div id="body_area">
+
+  <!--第一屏-->
+  <div class="item" style="background: url('../images/index/index_imgbg.jpg') no-repeat;width: 1920px;height: 1080px;opacity: 1"></div>
+  <div class="item" style="background: url('../images/index/LOGO.png') no-repeat;width: 268px;height: 80px;top: 50px;left: 100px;"></div>
+  <div class="areas" style="top: 0px;">
+    <!--搜索 任务栏-->
+    <div class="area area_0" style="left: 1569px;top: 88px;">
+      <div class="item" id="area0_div_0" style="width: 174px;height: 58px;">
+        <div class="img" style="background: url('../images/index/search.png') no-repeat;width: 174px;height: 58px"></div>
+        <div class="select" style="background: url('../images/index/search_s.png') no-repeat;"></div>
+      </div>
+    </div>
+    <!--顶部导航栏-->
+    <div class="area area_1" style="left: 0px;top: 0px;">
+      <div class="item" id="area1_div_0" style="left: 338px;top: 128px;">
+        <div class="navTxt" style="background: url('../images/sprites/nav_txt.png') -10px -10px;width: 87px; height: 29px;"></div>
+        <div class="select"></div>
+        <i class="icon" style="background: url('../images/sprites/nav_icon.png') -10px -201px;width: 66px; height: 79px;"></i>
+      </div>
+      <div class="item" id="area1_div_1" style="left: 465px;top: 128px;">
+        <div class="navTxt" style="background: url('../images/sprites/nav_txt.png') -10px -59px;width: 87px; height: 29px;"></div>
+        <div class="select"></div>
+        <i class="icon" style="background: url('../images/sprites/nav_icon.png') -181px -201px;width: 61px; height: 73px;"></i>
+      </div>
+      <div class="item" id="area1_div_2" style="left: 588px;top: 128px;">
+        <div class="navTxt" style="background: url('../images/sprites/nav_txt.png') -117px -108px;width: 87px; height: 29px;"></div>
+        <div class="select"></div>
+        <i class="icon" style="background: url('../images/sprites/nav_icon.png') -122px -10px;width: 88px; height: 71px;"></i>
+      </div>
+      <div class="item" id="area1_div_3" style="left: 721px;top: 128px;">
+        <div class="navTxt" style="background: url('../images/sprites/nav_txt.png') -10px -157px;width: 87px; height: 29px;"></div>
+        <div class="select"></div>
+        <i class="icon" style="background: url('../images/sprites/nav_icon.png') -230px -88px;width: 77px; height: 69px;"></i>
+      </div>
+      <div class="item" id="area1_div_4" style="left: 853px;top: 128px;">
+        <div class="navTxt" style="background: url('../images/sprites/nav_txt.png') -117px -157px;width: 87px; height: 29px;"></div>
+        <div class="select"></div>
+        <i class="icon" style="background: url('../images/sprites/nav_icon.png') -96px -201px;width: 65px; height: 76px;"></i>
+      </div>
+      <div class="item" id="area1_div_5" style="left: 983px;top: 128px;">
+        <div class="navTxt" style="background: url('../images/sprites/nav_txt.png') -10px -108px;width: 87px; height: 29px;"></div>
+        <div class="select"></div>
+        <i class="icon" style="background: url('../images/sprites/nav_icon.png') -10px -10px;width: 92px; height: 71px"></i>
+      </div>
+      <div class="item" id="area1_div_6" style="left: 1116px;top: 128px;">
+        <div class="navTxt" style="background: url('../images/sprites/nav_txt.png') -117px -59px;width: 87px; height: 29px;"></div>
+        <div class="select"></div>
+        <i class="icon" style="background: url('../images/sprites/nav_icon.png') -10px -101px;width: 78px; height: 80px;"></i>
+      </div>
+      <div class="item" id="area1_div_7" style="left: 1247px;top: 128px;">
+        <div class="navTxt" style="background: url('../images/sprites/nav_txt.png') -117px -10px;width: 87px; height: 29px;"></div>
+        <div class="select"></div>
+        <i class="icon" style="background: url('../images/sprites/nav_icon.png') -230px -10px;;width: 95px; height: 58px;"></i>
+      </div>
+      <div class="item" id="area1_div_8" style="left: 1377px;top: 128px;width: 120px; height: 29px;">
+        <div class="navTxt" style="background: url('../images/sprites/nav_txt0.png') no-repeat;width: 115px; height: 29px;"></div>
+        <div class="select"></div>
+        <i class="icon" style="background: url('../images/sprites/nav_icon.png') -108px -101px;width: 97px; height: 62px;"></i>
+      </div>
+    </div>
+    <!--视频 轮播 主海报-->
+    <div class="area area_2" style="left: 0px;top: 195px">
+      <div class="item" id="area2_item_0" style="left: 0px;top: 0px;width: 511px;height: 323px;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area2_txt_0"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area2_item_1" style="left: 532px;top: 0px;width: 746px;height: 323px;">
+        <i class="icon" style="background:url('../images/index/sp_icon.png') no-repeat;width: 69px;height: 80px;right: 14px;top: -12px;z-index: 25;"></i>
+        <div class="pic">
+          <!--轮播图模块-->
+          <div class="banner_box" id="banner_box">
+            <div class="banner" id="banner_img_0">
+              <img id="area3_img_0" src="" alt="1">
+            </div>
+            <div class="banner" id="banner_img_1">
+              <img id="area3_img_1" src="" alt="2">
+            </div>
+            <div class="banner" id="banner_img_2">
+              <img id="area3_img_2" src="" alt="3">
+            </div>
+          </div>
+          <div id="banner_tab">
+            <div class="tab" style="left: 0px;">
+              <i class="tab_bg" style="background: url('../images/index/tab.png') no-repeat;width: 16px;height: 14px;"></i>
+              <i class="tab_select" style="background: url('../images/index/tab_0.png') no-repeat;width: 8px;height: 8px"></i>
+            </div>
+            <div class="tab" style="left: 25px;">
+              <i class="tab_bg" style="background: url('../images/index/tab.png') no-repeat;width: 16px;height: 14px;"></i>
+              <i class="tab_select" style="background: url('../images/index/tab_0.png') no-repeat;width: 8px;height: 8px"></i>
+            </div>
+            <div class="tab" style="left: 50px;">
+              <i class="tab_bg" style="background: url('../images/index/tab.png') no-repeat;width: 16px;height: 14px;"></i>
+              <i class="tab_select" style="background: url('../images/index/tab_0.png') no-repeat;width: 8px;height: 8px"></i>
+            </div>
+
+          </div>
+        </div>
+        <div class="txt">
+          <p id="area2_txt_1"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area2_item_2" style="left: 1298px;top: 0px;width: 452px;height: 560px;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area2_txt_2"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+    </div>
+    <!--六大模块功能菜单-->
+    <div class="area area_3" style="left: 0px;top: 532px">
+      <div class="item" id="area3_item_0" style="left: 0px;top: 0px;width: 248px;height: 140px;">
+        <div class="img" style="background: url('../images/sprites/function_list.png') -10px -10px;width: 248px;height: 140px;"></div>
+        <div class='select' style="background: url('../images/sprites/function_list_s.png') -10px -10px;width: 248px;height: 140px;"></div>
+        <i class="icon" style="left: 188px;top: 15px;background: url('../images/index/VIP_ICON.png') no-repeat;width: 45px;height: 24px"></i>
+      </div>
+      <div class="item" id="area3_item_1" style="left: 263px;top: 0px;width: 248px;height: 140px;">
+        <div class="img" style="background: url('../images/sprites/function_list.png') -278px -10px;width: 248px;height: 140px;"></div>
+        <div class='select' style="background: url('../images/sprites/function_list_s.png') -278px -10px;width: 248px;height: 140px;"></div>
+      </div>
+      <div class="item" id="area3_item_2" style="left: 0px;top: 156px;width: 248px;height: 140px;">
+        <div class="img" style="background: url('../images/sprites/function_list.png') -10px -170px;width: 248px;height: 140px;"></div>
+        <div class='select' style="background: url('../images/sprites/function_list_s.png') -10px -170px;width: 248px;height: 140px;"></div>
+      </div>
+      <div class="item" id="area3_item_3" style="left: 263px;top: 156px;width: 248px;height: 140px;">
+        <div class="img" style="background: url('../images/sprites/function_list.png')-278px -170px;width: 248px;height: 140px;"></div>
+        <div class='select' style="background: url('../images/sprites/function_list_s.png') -278px -170px;width: 248px;height: 140px;"></div>
+      </div>
+      <div class="item" id="area3_item_4" style="left: 0px;top: 312px;width: 250px;height: 100px;">
+        <div class="img" style="background: url('../images/sprites/function_list.png') -10px -330px;width: 250px;height: 100px"></div>
+        <div class='select' style="background: url('../images/sprites/function_list_s.png') -10px -330px;width: 250px;height: 100px;"></div>
+      </div>
+      <div class="item" id="area3_item_5" style="left: 263px;top: 312px;width: 250px;height: 100px;">
+        <div class="img" style="background: url('../images/sprites/function_list.png') -546px -10px;width: 250px;height: 100px;"></div>
+        <div class='select' style="background: url('../images/sprites/function_list_s.png') -546px -10px;width: 250px;height: 100px;"></div>
+      </div>
+    </div>
+    <!--三小海报-->
+    <div class="area area_4" style="left: 532px;top: 532px">
+      <div class="item" id="area4_item_0" style="left: 0px;top: 0px;width: 240px;height: 223px;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area4_txt_0"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area4_item_1" style="left: 254px;top: 0px;width: 240px;height: 223px;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area4_txt_1"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area4_item_2" style="left: 507px;top: 0px;width: 240px;height: 223px;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area4_txt_2"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+    </div>
+    <!--明星大咖-->
+    <div class="area area_5" style="left: 555px;top: 766px;width:1240px;height: 200px;">
+      <div class="item" id="area5_item_0" style="left: 0px;bottom: 0px;width: 160px;height: 189px;">
+        <div class="img" style="background: url('../images/sprites/ip_list.png') -370px -231px;width: 160px;height: 187px"></div>
+        <div class="select" style="background: url('../images/sprites/ip_list_s.png') -289px -10px;;width: 259px; height: 259px;left: -52px;top: -57px;"></div>
+      </div>
+      <div class="item" id="area5_item_1" style="left: 180px;bottom: 0px;width: 160px;height: 194px;">
+        <div class="img" style="background: url('../images/sprites/ip_list.png') -10px -231px;width: 160px;height: 194px"></div>
+        <div class="select" style="background: url('../images/sprites/ip_list_s.png') -10px -289px;width: 259px; height: 259px;left: -53px;top: -50px;"></div>
+      </div>
+      <div class="item" id="area5_item_2" style="left: 360px;bottom: 0px;width: 160px;height: 195px;">
+        <div class="img" style="background: url('../images/sprites/ip_list.png') -190px -10px;width: 160px;height: 195px"></div>
+        <div class="select" style="background: url('../images/sprites/ip_list_s.png') -568px -289px;width: 259px; height: 259px;left: -57px;top: -49px;"></div>
+      </div>
+      <div class="item" id="area5_item_3" style="left: 540px;bottom: 0px;width: 160px;height: 192px;">
+        <div class="img" style="background: url('../images/sprites/ip_list.png') -190px -231px;width: 160px;height: 192px"></div>
+        <div class="select" style="background: url('../images/sprites/ip_list_s.png') -568px -10px; width: 259px; height: 259px;left: -55px;top: -52px;"></div>
+      </div>
+      <div class="item" id="area5_item_4" style="left: 720px;bottom: 0px;width: 160px;height: 195px;">
+        <div class="img" style="background: url('../images/sprites/ip_list.png') -370px -10px;width: 160px;height: 195px"></div>
+        <div class="select" style="background: url('../images/sprites/ip_list_s.png') -289px -289px; width: 259px; height: 259px;left: -55px;top: -49px;"></div>
+      </div>
+      <div class="item" id="area5_item_5" style="left: 900px;bottom: 0px;width: 160px;height: 201px;">
+        <div class="img" style="background: url('../images/sprites/ip_list.png') -10px -10px;width: 160px;height: 201px"></div>
+        <div class="select" style="background: url('../images/sprites/ip_list_s.png') -10px -10px;; width: 259px; height: 259px;left: -52px;top: -43px;"></div>
+      </div>
+      <div class="item" id="area5_item_6" style="left: 1062px;bottom: 18px;width: 171px;height: 164px;">
+        <div class="img" style="background: url('../images/sprites/ip_list.png') -550px -10px;width: 171px;height: 164px"></div>
+        <div class="select" style="background: url('../images/sprites/ip_list_s.png') -10px -568px;width: 175px; height: 164px;left: 0px;top: 0px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--第二屏-->
+  <div class="areas" style="top: 1008px;">
+    <div class="title" style="background: url('../images/index/area_title_0.png') no-repeat; width: 235px;height: 56px;left:10px;top: 0px;"></div>
+    <div class="area area_6" style="top: 95px;">
+      <div class="item " id="area6_item_0" style="left: 0px;top:0px;width: 852px;height: 572px;background: #0d9de0;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="triangle triangle_0"></div>
+        <span class="rotate" style="right: 15px;top: 25px;">动漫</span>
+        <div class="txt" style="background: #0d9de0;">
+          <p id="area6_txt_0"></p>
+        </div>
+        <div class="select"></div>
+
+      </div>
+      <div class="item " id="area6_item_1" style="left: 885px;top:0px;width: 412px;height: 572px;background: #f19b20;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="triangle triangle_1"></div>
+        <span class="rotate" style="right: 15px;top: 25px;">儿歌</span>
+        <div class="txt" style="background: #f19b20;">
+          <p id="area6_txt_1"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+    </div>
+    <div class="area area_7" style="top: 95px;">
+      <div class="item " id="area7_item_0" style="left: 1326px;top:0px;width: 412px;height: 272px;background: #07d887;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="triangle triangle_2"></div>
+        <span class="rotate" style="right: 15px;top: 25px;">玩具</span>
+        <div class="txt" style="background: #07d887;">
+          <p id="area7_txt_0"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item " id="area7_item_1" style="left: 1326px;top:300px;width: 412px;height: 272px;background: #00e8d0;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="triangle triangle_3"></div>
+        <span class="rotate" style="right: 15px;top: 25px;">国学</span>
+        <div class="txt" style="background: #00e8d0;">
+          <p id="area7_txt_1"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+    </div>
+    <div class="area area_8" style="top: 95px;">
+      <div class="item " id="area8_item_0" style="left: 0px;top:598px;width: 412px;height: 422px;background: #b477dc;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="triangle triangle_4"></div>
+        <span class="rotate" style="right: 15px;top: 25px;">科学</span>
+        <div class="txt" style="background: #b477dc;">
+          <p id="area8_txt_0"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item " id="area8_item_1" style="left: 442px;top:598px;width: 412px;height: 422px;background: #f98160;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="triangle triangle_5"></div>
+        <span class="rotate" style="right: 15px;top: 25px;">益智</span>
+        <div class="txt" style="background: #f98160;">
+          <p id="area8_txt_1"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item " id="area8_item_2" style="left: 886px;top:598px;width: 412px;height: 422px;background: #f9bc6b;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="triangle triangle_6"></div>
+        <span class="rotate" style="right: 15px;top: 25px;">科学</span>
+        <div class="txt" style="background: #f9bc6b;">
+          <p id="area8_txt_2"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item " id="area8_item_3" style="left: 1326px;top:598px;width: 412px;height: 422px;background: #f09ec2;">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="triangle triangle_7"></div>
+        <span class="rotate" style="right: 15px;top: 25px;">益智</span>
+        <div class="txt" style="background: #f09ec2;">
+          <p id="area8_txt_3"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!--第三屏-->
+  <!--男孩心中的正义英雄-->
+  <div class="areas" style="top: 2184px;">
+    <div class="item" style="background: url('../images/index/index_imgbg_0.png') no-repeat;width:695px;height:838px;left: -85px;"></div>
+    <div class="title" style="background: url('../images/index/area_title_1.png') no-repeat; width: 450px;height: 49px;left:6px;top: 0px;"></div>
+    <div class="area area_9" style="left: 243px;top: 90px;height: 400px;">
+      <div class="item" id="area9_item_0" style="left:0px;bottom:0px;width: 578px;height: 378px;background: #2e74ce">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area9_txt_0"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area9_item_1" style="left: 607px;bottom:0px;width: 284px;height: 394px;background: #2e74ce">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area9_txt_1"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area9_item_2" style="left: 910px;bottom:0px;width: 284px;height: 394px;background: #2e74ce">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area9_txt_2"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area9_item_3" style="left: 1214px;bottom:0px;width: 284px;bottom:0px;height: 394px;background: #2e74ce">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area9_txt_3"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--女孩最爱的甜美公主孟-->
+  <div class="areas" style="top: 2722px;">
+    <div class="item" style="background: url('../images/index/index_imgbg_1.png') no-repeat;width:416px;height:733px;left: -85px;"></div>
+    <div class="title" style="background: url('../images/index/area_title_2.png') no-repeat; width: 485px;height: 52px;left:6px;top: 0px;"></div>
+    <div class="area area_10" style="left: 243px;top: 100px;height: 400px;">
+      <div class="item" id="area10_item_0" style="left:0px;bottom:0px;width: 578px;height: 378px;background: #d6709b">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area10_txt_0"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area10_item_1" style="left: 607px;bottom:0px;width: 284px;height: 394px;background: #d6709b">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area10_txt_1"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area10_item_2" style="left: 910px;bottom:0px;width: 284px;height: 394px;background: #d6709b">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area10_txt_2"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area10_item_3" style="left: 1214px;bottom:0px;width: 284px;bottom:0px;height: 394px;background: #d6709b">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area10_txt_3"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--第四屏-->
+  <!--全家一起看的亲子动画-->
+  <div class="areas" style="top: 3270px;">
+    <div class="item" style="background: url('../images/index/index_imgbg_2.png') no-repeat;width:1920px;height:664px;left: -85px;"></div>
+    <div class="title" style="background: url('../images/index/area_title_3.png') no-repeat; width: 500px;height: 60px;left:6px;top: 0px;"></div>
+    <div class="area area_11" style="left: 250px;top: 82px;height: 400px;">
+      <div class="item" id="area11_item_0" style="left:0px;bottom:0px;width: 284px;height: 394px;background: #409594">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area11_txt_0"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area11_item_1" style="left: 302px;bottom:0px;width: 284px;height: 394px;background: #409594">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area11_txt_1"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area11_item_2" style="left: 607px;bottom:0px;width: 284px;height: 394px;background: #409594">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area11_txt_2"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area11_item_3" style="left: 910px;bottom:0px;width: 284px;bottom:0px;height: 394px;background: #409594">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area11_txt_3"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+      <div class="item" id="area11_item_4" style="left: 1214px;bottom:0px;width: 284px;bottom:0px;height: 394px;background: #409594">
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area11_txt_4"></p>
+        </div>
+        <div class="select"></div>
+      </div>
+    </div>
+  </div>
+
+  <!--动手动脑-->
+  <div class="areas" style="top: 3794px;">
+    <div class="item" style="background: url('../images/index/index_imgbg_3.png') no-repeat;width:1920px;height:645px;left: -85px;"></div>
+    <div class="title" style="background: url('../images/index/area_title_4.png') no-repeat; width: 376px;height: 53px;left:6px;top: 0px;"></div>
+    <div class="area area_12" style="left: 243px;top: 100px;height: 400px;">
+      <div class="item" id="area12_item_0" style="left:0px;bottom:0px;width: 578px;height: 378px;background: #4cb746">
+        <div class="select"></div>
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area12_txt_0"></p>
+        </div>
+      </div>
+      <div class="item" id="area12_item_1" style="left: 607px;bottom:0px;width: 284px;height: 394px;background: #4cb746">
+        <div class="select"></div>
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area12_txt_1"></p>
+        </div>
+      </div>
+      <div class="item" id="area12_item_2" style="left: 910px;bottom:0px;width: 284px;height: 394px;background: #4cb746">
+        <div class="select"></div>
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area12_txt_2"></p>
+        </div>
+      </div>
+      <div class="item" id="area12_item_3" style="left: 1214px;bottom:0px;width: 284px;bottom:0px;height: 394px;background: #4cb746">
+        <div class="select"></div>
+        <div class="pic"><img src="" alt=""></div>
+        <div class="txt">
+          <p id="area12_txt_3"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--返回顶部-->
+  <div class="item" style="background: url('../images/index/index_img_1.png') no-repeat;width: 1920px;height: 251px;bottom: 0px;left:0px;"></div>
+  <div class="item" style="background: url('../images/index/index_img.png') no-repeat;width: 944px;height: 177px;bottom: 0px;left:550px;"></div>
+  <div class="item" id="area13_item_0" style="bottom: 18px;left:950px;width: 88px;height: 98px;">
+    <div class="img" style="background: url('../images/index/ruterntop.png') no-repeat;width: 88px;height: 98px"></div>
+    <div class="select" style="left: -4px;top:0px;border: 4px solid #fff;width: 88px;height: 98px;box-shadow: 0px 0px 20px 5px #FFFFFF"></div>
+  </div>
+</div>
+
+
+<!-- E content -->
+<script type="text/javascript" src="../js/WkEpg3.0.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/lottie.js"></script>
+
+
+<script>
+    var pageobj;
+    var imgloadnum = 33;
+
+    (function(window, document) {
+
+        var area0, area1, area2, area3, area4, area5, area6, area7, area8, area9, area10, area11, area12, area13;
+        var url = window.location.href;
+        var indexid = !WkEpg.Util.getURLParameter("indexid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("indexid", url)); //焦点数据
+        var areaid = !WkEpg.Util.getURLParameter("areaid", url) ? 2 : parseInt(WkEpg.Util.getURLParameter("areaid", url)); //焦点数据
+        var returnurl = !WkEpg.Util.getURLParameter("returnurl", url) ? "index.html" : decodeURIComponent(WkEpg.Util.getURLParameter("returnurl", url));
+        var focusObj = null;
+        var dataObj = null;
+        var controlObj = null;
+        var movinObj = null;
+
+        var SowingTime = 4000; //轮播时间 ms
+        var Sowingindex = 0; //轮播计数
+        var nameCut = 8; //节目名称限制
+        var curPage = 0; //当前屏数
+        var pageTopPos = [0, -400, -1080, -2160, -3240, -3426]; //页面滚动top定位
+
+        var okEventLock = true;
+
+
+        function FocusMove() {
+            this.createArea();
+            this.createFunction();
+            this.marqueeName();
+        }
+        FocusMove.prototype = {
+
+            createArea: function() {
+                //Array(上、左、下、右) area.stablemoveindex("fromIndex-toId>toIndex")
+                area0 = WkEpg.AreaCreator(1, 1, [-1, 1, 2, -1], "area0_div_", "className:item item_focus", "className:item");
+                area1 = WkEpg.AreaCreator(1, 9, [-1, -1, 2, 0], "area1_div_", "className:item item_focus", "className:item");
+                area2 = WkEpg.AreaCreator(1, 3, [1, -1, 3, -1], "area2_item_", "className:item item_focus", "className:item");
+                area3 = WkEpg.AreaCreator(3, 2, [2, -1, 6, 4], "area3_item_", "className:item item_focus", "className:item");
+                area4 = WkEpg.AreaCreator(1, 3, [2, 3, 5, 2], "area4_item_", "className:item item_focus", "className:item");
+                area5 = WkEpg.AreaCreator(1, 7, [4, 3, 6, -1], "area5_item_", "className:item item_focus", "className:item");
+                area6 = WkEpg.AreaCreator(1, 2, [5, -1, 8, 7], "area6_item_", "className:item item_focus", "className:item");
+                area7 = WkEpg.AreaCreator(2, 1, [5, 6, 8, -1], "area7_item_", "className:item item_focus", "className:item");
+                area8 = WkEpg.AreaCreator(1, 4, [6, -1, 9, -1], "area8_item_", "className:item item_focus", "className:item");
+                area9 = WkEpg.AreaCreator(1, 4, [8, -1, 10, -1], "area9_item_", "className:item item_focus", "className:item");
+                area10 = WkEpg.AreaCreator(1, 4, [9, -1, 11, -1], "area10_item_", "className:item item_focus", "className:item");
+                area11 = WkEpg.AreaCreator(1, 5, [10, -1, 12, -1], "area11_item_", "className:item item_focus", "className:item");
+                area12 = WkEpg.AreaCreator(1, 4, [11, -1, 13, -1], "area12_item_", "className:item item_focus", "className:item");
+                area13 = WkEpg.AreaCreator(1, 1, [12, -1, -1, -1], "area13_item_", "className:item item_focus", "className:item");
+
+                area0.stablemoveindex = new Array(-1, "0-1>8", "0-2>2", -1);
+                area2.stablemoveindex = new Array("2-0>0", -1, "1-4>0,2-5>5", -1);
+                area3.stablemoveindex = new Array(-1, -1, "4-6>0,5-6>0", "5-5>0");
+                area4.stablemoveindex = new Array("0-2>1,1-2>1,2-2>1", "0-3>1", "1-5>1,2-5>3", "2-2>2");
+                area5.stablemoveindex = new Array("0-4>0,1-4>1,2-4>1,3-4>2,4-2>2,5-2>2,6-2>2", "0-3>5", -1, -1);
+                area6.stablemoveindex = new Array("0-3>5", -1, "1-8>2", -1);
+                area7.stablemoveindex = new Array("0-5>6", "0-6>1,1-6>1", "1-8>3", -1);
+                area8.stablemoveindex = new Array("2-6>1,3-7>1", -1, -1, -1);
+
+                area9.stablemoveindex = new Array(-1, -1, "1-10>1,2-10>2,3-10>3", -1);
+                area10.stablemoveindex = new Array("1-9>1,2-9>2,3-9>3", -1, "1-11>2,2-11>3,3-11>4", -1);
+                area11.stablemoveindex = new Array("2-10>1,3-10>2,4-10>3", -1, "2-12>1,3-12>2,4-12>3", -1);
+                area12.stablemoveindex = new Array("1-11>2,2-11>3,3-11>4", -1, -1, -1);
+
+                pageobj = WkEpg.PageCreator(areaid, indexid, [area0, area1, area2, area3, area4, area5, area6, area7, area8, area9, area10, area11, area12, area13]);
+            },
+
+            createFunction: function() {
+
+                // num: ( 0 1 2 3 / 上 左 下 右 )
+                pageobj.pageobjTurnPageFun = function(num) {
+                    if (num == 2) {
+                        if ((pageobj.curareaid == 3 && (area3.curindex > 3 ? true : false)) || pageobj.curareaid == 5 || pageobj.curareaid == 8 || pageobj.curareaid == 10 || pageobj.curareaid == 12) {
+                            controlObj.moveDown();
+                        };
+                    } else if (num == 0) {
+                        if (pageobj.curareaid == 6 || pageobj.curareaid == 7 && (area7.curindex == 0 ? true : false) || pageobj.curareaid == 9 || pageobj.curareaid == 11 || pageobj.curareaid ==
+                            13) {
+                            controlObj.moveUp();
+                        };
+                    };
+                };
+                WkEpg.Nav.keyBackEvent = function() {
+                    // WkEpg.Util.gotoPage(returnurl);
+                };
+
+                //数据加载完成开启确认键
+
+                area0.areaOkEvent = function() {
+                    var _url = "search.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                    WkEpg.Util.gotoPage(_url);
+                }
+                area1.areaOkEvent = function() {
+                    switch (this.curindex) {
+                        case 0:
+                            var _url = "pre_dongman.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 1:
+                            var _url = "pre_kid.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 2:
+                            var _url = "pre_toy.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 3:
+                            var _url = "pre_kexue.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 4:
+                            var _url = "pre_chinese.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 5:
+                            var _url = "pre_yizhi.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 6:
+                            var _url = "pre_english.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 7:
+                            var _url = "pre_draw.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 8:
+                            var _url = "sp_list.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                    }
+                }
+                area3.areaOkEvent = function() {
+                    switch (this.curindex) {
+                        case 0:
+                            var _url = "pet.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 1:
+                            var _url = "growup.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 2:
+                            var _url = "treasure_index.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 3:
+                            var _url = "gift.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 4:
+                            var _url = "history.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 5:
+                            var _url = "order.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                    }
+                }
+                area5.areaOkEvent = function() {
+                    switch (this.curindex) {
+                        case 0:
+                            var _url = "star_list.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex)) + "&starbgIndex=0";
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 1:
+                            var _url = "star_list.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex)) + "&starbgIndex=4";
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 2:
+                            var _url = "star_list.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex)) + "&starbgIndex=1";
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 3:
+                            var _url = "star_list.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex)) + "&starbgIndex=3";
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 4:
+                            var _url = "star_list.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex)) + "&starbgIndex=2";
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 5:
+                            var _url = "star_list.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex)) + "&starbgIndex=5";
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+                        case 6:
+                            var _url = "cartoon_list.html" + "?returnurl=" + encodeURIComponent(dataObj.getReturnUrl(this.id, this.curindex));
+                            WkEpg.Util.gotoPage(_url);
+                            break;
+
+                    }
+                }
+                area13.areaOkEvent = function() {
+                    controlObj.goBackTop();
+                }
+            },
+            // 标题遮罩
+            marqueeName: function() {
+                area2.changefocusAfterEvent = function() {
+                    if (this.curindex == 1) {
+                        controlObj.SowingLock = true;
+                    }
+                    controlObj.bodyPosByCurPageFun(0);
+                }
+                area2.changeunfocusBeforeEvent = function() {
+                    controlObj.SowingLock = false;
+                }
+
+                area3.changefocusAfterEvent = function() {
+                    $('#area3_item_' + this.curindex + " .select").animate({
+                        opacity: "1"
+                    }, 300);
+                    if (this.curindex > 1) {
+                        controlObj.bodyPosByCurPageFun(1);
+                    }
+                }
+                area3.changeunfocusBeforeEvent = function() {
+                    $('#area3_item_' + this.curindex + " .select").css({
+                        opacity: "0.7"
+                    });
+                }
+
+                area5.changefocusAfterEvent = function() {
+                    $('#area5_item_' + this.curindex + " .select").animate({
+                        opacity: "1"
+                    }, 300);
+                    controlObj.bodyPosByCurPageFun(1);
+                }
+                area5.changeunfocusBeforeEvent = function() {
+                    $('#area5_item_' + this.curindex + " .select").css({
+                        opacity: "0.7"
+                    });
+                }
+
+                area6.changefocusAfterEvent = function() {
+                    controlObj.bodyPosByCurPageFun(2);
+                    if (this.doms[this.curindex] != undefined && WkEpg.Util.getStrRealLen(this.doms[this.curindex].contentName) > nameCut * 2)
+                        $("#area6_txt_" + this.curindex).html("<marquee direction='left' scrolldelay='100'>" + this.doms[this.curindex].contentName + "</marquee>");
+                }
+                area6.changeunfocusBeforeEvent = function() {
+                    if (this.doms[this.curindex] != undefined && WkEpg.Util.getStrRealLen(this.doms[this.curindex].contentName) > nameCut * 2)
+                        $("#area6_txt_" + this.curindex).html(WkEpg.Util.getSubStr(this.doms[this.curindex].contentName, nameCut * 2, true));
+                }
+            }
+        };
+
+        function Control() {
+            this.bindInitPage();
+            this.SowingLock = false;
+            this.SowingMapInt();
+            this.SowingMapFunc(Sowingindex);
+        }
+        Control.prototype = {
+            //根据areaid判断body top值
+            bodyPosByCurPageFun: function(curpage) {
+                curPage = curpage;
+                $('#body_area').css('top', pageTopPos[curPage] + "px");
+            },
+            //下移
+            moveDown: function() {
+                if (curPage == 5) return;
+                curPage++;
+                $('#body_area').css('top', pageTopPos[curPage] + "px");
+            },
+            //上移
+            moveUp: function() {
+                if (curPage == 0) return;
+                curPage--;
+                $('#body_area').css('top', pageTopPos[curPage] + "px");
+            },
+            //返回顶点
+            goBackTop: function() {
+                curPage = 0;
+                $('#body_area').css('top', "0px");
+                pageobj.changefocus(2, 0);
+            },
+            //轮播
+            SowingMapFunc: function(index) {
+                if (this.SowingLock) {
+                    return -1;
+                }
+                $('#banner_box .banner').eq(index).fadeIn().siblings().fadeOut();
+                $('#banner_tab>div').eq(index).addClass('cur').siblings().removeClass('cur');
+            },
+            //轮播控制
+            SowingMapInt: function() {
+                var self = this;
+                setInterval(function() {
+                    Sowingindex++;
+                    if (Sowingindex >= 3) {
+                        Sowingindex = 0;
+                    }
+                    self.SowingMapFunc(Sowingindex)
+                }, SowingTime);
+            },
+            //添加推荐位数据
+            bindRecommendDate: function(data) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].position === "p1") {
+                        $('.banner').eq(0).find("img").attr("src", data[i]['images'][0]);
+                        $('.banner').eq(1).find("img").attr("src", data[i]['images'][1]);
+                        $('.banner').eq(2).find("img").attr("src", data[i]['images'][2]);
+                    } else {
+                        $('.pic').eq(i).find("img").attr("src", data[i]['images'][0]);
+                        $('.txt').eq(i).find("p").html(WkEpg.Util.getSubStr(data[i]['txt'], nameCut * 2, true));
+                    }
+                    var _url = data[i]['link']['url'];
+                    var _programid = data[i]['link']['query']['program_id'];
+                    var _txt = data[i]['txt'];
+                    var tvlink = _url + ".html?programid=" + _programid;
+                    switch (data[i].position) {
+                        case "p0":
+                            area2.doms[0].contentName = _txt;
+                            area2.doms[0].mylink = tvlink;
+                            break;
+                        case "p1":
+                            area2.doms[1].contentName = _txt;
+                            area2.doms[1].mylink = tvlink;
+                            break;
+                        case "p2":
+                            area2.doms[2].contentName = _txt;
+                            area2.doms[2].mylink = tvlink;
+                            break;
+                        case "p3":
+                            area4.doms[0].contentName = _txt;
+                            area4.doms[0].mylink = tvlink;
+                            break;
+                        case "p4":
+                            area4.doms[1].contentName = _txt;
+                            area4.doms[1].mylink = tvlink;
+                            break;
+                        case "p5":
+                            area4.doms[2].contentName = _txt;
+                            area4.doms[2].mylink = tvlink;
+                            break;
+                        case "p6":
+                            area6.doms[0].contentName = _txt;
+                            area6.doms[0].mylink = tvlink;
+                            break;
+                        case "p7":
+                            area6.doms[1].contentName = _txt;
+                            area6.doms[1].mylink = tvlink;
+                            break;
+                        case "p8":
+                            area7.doms[0].contentName = _txt;
+                            area7.doms[0].mylink = tvlink;
+                            break;
+                        case "p9":
+                            area7.doms[1].contentName = _txt;
+                            area7.doms[1].mylink = tvlink;
+                            break;
+                        case "p10":
+                            area8.doms[0].contentName = _txt;
+                            area8.doms[0].mylink = tvlink;
+                            break;
+                        case "p11":
+                            area8.doms[1].contentName = _txt;
+                            area8.doms[1].mylink = tvlink;
+                            break;
+                        case "p12":
+                            area8.doms[2].contentName = _txt;
+                            area8.doms[2].mylink = tvlink;
+                            break;
+                        case "p13":
+                            area8.doms[3].contentName = _txt;
+                            area8.doms[3].mylink = tvlink;
+                            break;
+                        case "p14":
+                            area9.doms[0].contentName = _txt;
+                            area9.doms[0].mylink = tvlink;
+                            break;
+                        case "p15":
+                            area9.doms[1].contentName = _txt;
+                            area9.doms[1].mylink = tvlink;
+                            break;
+                        case "p16":
+                            area9.doms[2].contentName = _txt;
+                            area9.doms[2].mylink = tvlink;
+                            break;
+                        case "p17":
+                            area9.doms[3].contentName = _txt;
+                            area9.doms[3].mylink = tvlink;
+                            break;
+                        case "p18":
+                            area10.doms[0].contentName = _txt;
+                            area10.doms[0].mylink = tvlink;
+                            break;
+                        case "p19":
+                            area10.doms[1].contentName = _txt;
+                            area10.doms[1].mylink = tvlink;
+                            break;
+                        case "p20":
+                            area10.doms[2].contentName = _txt;
+                            area10.doms[2].mylink = tvlink;
+                            break;
+                        case "p21":
+                            area10.doms[3].contentName = _txt;
+                            area10.doms[3].mylink = tvlink;
+                            break;
+                        case "p22":
+                            area11.doms[0].contentName = _txt;
+                            area11.doms[0].mylink = tvlink;
+                            break;
+                        case "p23":
+                            area11.doms[1].contentName = _txt;
+                            area11.doms[1].mylink = tvlink;
+                            break;
+                        case "p24":
+                            area11.doms[2].contentName = _txt;
+                            area11.doms[2].mylink = tvlink;
+                            break;
+                        case "p25":
+                            area11.doms[3].contentName = _txt;
+                            area11.doms[3].mylink = tvlink;
+                            break;
+                        case "p26":
+                            area11.doms[4].contentName = _txt;
+                            area11.doms[4].mylink = tvlink;
+                            break;
+                        case "p27":
+                            area12.doms[0].contentName = _txt;
+                            area12.doms[0].mylink = tvlink;
+                            break;
+                        case "p28":
+                            area12.doms[1].contentName = _txt;
+                            area12.doms[1].mylink = tvlink;
+                            break;
+                        case "p29":
+                            area12.doms[2].contentName = _txt;
+                            area12.doms[2].mylink = tvlink;
+                            break;
+                        case "p30":
+                            area12.doms[3].contentName = _txt;
+                            area12.doms[3].mylink = tvlink;
+                            break;
+                    }
+                }
+            },
+            //页面过渡
+            bindInitPage: function() {
+                $('img').each(function() {
+                    $(this).attr("src", "../test/0.png");
+                });
+                $('#loading').show();
+            }
+        }
+
+
+        function loadData() {
+            this.loadtestdata();
+            // this.loadRecommendDate();
+            this.getReturnUrl();
+        }
+        loadData.prototype = {
+            //test
+            loadtestdata: function() {
+                $.ajax({
+                    url: "https://api.douban.com/v2/movie/top250?count=31",
+                    type: "get",
+                    dataType: "jsonp",
+                    success: function(result) {
+                        var data = result.subjects;
+                        for (var i = 0; i < data.length; i++) {
+                            if (i < 2 && i > 0) {
+                                $('.banner').eq(0).find("img").attr("src", data[i]['images']['large']);
+                                $('.banner').eq(1).find("img").attr("src", data[i + 1]['images']['large']);
+                                $('.banner').eq(2).find("img").attr("src", data[i + 2]['images']['large']);
+                            } else {
+                                $('.pic').eq(i).find("img").attr("src", data[i]['images']['large']);
+                                $('.txt').eq(i).find("p").html(WkEpg.Util.getSubStr(data[i]['title'], nameCut * 2, true));
+                                $('.pic').eq(i).siblings(".rotate").html(data[i]['genres'][1]);
+                            }
+                        }
+                        okEventLock = false;
+                        $('#loading').fadeOut(1000,"linear",function () {
+                            setTimeout(function () {
+                                $('loading').hide();
+                                movinObj.anim.stop();
+                                movinObj.anim.destroy();
+                            })
+                        });
+                    }
+                });
+            },
+            //加载推荐位数据
+            loadRecommendDate: function() {
+                var _url = "http://portal.oo/api/v2/recommands";
+                $.ajax({
+                    url: _url,
+                    dataType: "json",
+                    success: function(res) {
+                        var _data = res.data;
+                        controlObj.bindRecommendDate(_data);
+                    },
+                    error: function(res) {}
+                });
+            },
+            //返回逻辑
+            getReturnUrl: function(areaid, indexid) {
+                if (url.indexOf('?') > 0) {
+                    return url.split('?')[0] + "?returnurl=" + encodeURIComponent(returnurl) + "&areaid=" + areaid + "&indexid=" + indexid;
+                } else {
+                    return url + "?returnurl=" + encodeURIComponent(returnurl) + "&areaid=" + areaid + "&indexid=" + indexid;
+                };
+            }
+        }
+
+        //movin动画
+        function bodyMovin(){
+            this.anim = null;
+            this.animData = {
+                path: '../js/data.json', //json文件路径
+                name: "load",//动画名称
+                loop: true,//循环设置，值为true / false / number（循环/不循环/循环n次（n为输入值））
+                autoplay: true,//自动播放设置。true为准备就绪后自动播放，false为不自动播放。
+                renderer: 'svg', //渲染方式，有"html"、"canvas"和"svg"三种
+                container: WkEpg.Util.$('animation')//需要渲染动画的dom元素
+            }
+            this.init();
+        }
+        bodyMovin.prototype = {
+            init: function() {
+                var self = this;
+                self.anim = bodymovin.loadAnimation(self.animData);
+            }
+        }
+
+        window.addEventListener("unload", function() {
+            clearInterval(controlObj.SowingMapInt());
+        }, false);
+        window.addEventListener("load", function() {
+            window.focus();
+            if (!focusObj) focusObj = new FocusMove();
+            if (!dataObj) dataObj = new loadData();
+            if (!controlObj) controlObj = new Control();
+            if (!movinObj) movinObj = new bodyMovin();
+        }, false);
+    })(window, document);
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+/* S= CSS Reset
+----------------------------------------------- */
+body, table, caption, tbody, tfoot, thead, tr, th, td, ul, li, p, h1 { margin:0px; padding:0px; border:0px; }
+body { font-size: 24px; font-family: sans-serif; line-height: 100%; }
+ul, ol { list-style: none; }
+table { border-collapse:collapse; border-spacing:0; }
+a { text-decoration: none; }
+img { border: 0; }
+/* E= CSS Reset */
+
+/* S= Global
+----------------------------------------------- */
+body{
+    height: 1080px;
+    width: 1920px;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.pagebg img {
+    display: block; /* clear some space 对于html5中背景图比原高度多出3PX的问题*/
+}
+
+.container {
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*height: 720px;*/
+    /*width: 1280px;*/
+    /*overflow: hidden;*/
+}
+
+.item .select{
+    display: none;
+}
+
+.item_focus .select {
+    display: block;
+}
+
+.item .no_select {
+    display: block;
+}
+
+.item_focus .no_select {
+    display: none;
+}

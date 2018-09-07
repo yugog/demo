@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订购</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            background: url("../images/order/order_bg.jpg") no-repeat;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: Microsoft YaHei;
+        }
+        img{
+            vertical-align: top;
+        }
+        .area,
+        .pic,
+        .txt,
+        .item,
+        .user_msg,
+        .select{
+            position: absolute;
+        }
+
+        .user_msg{
+            width:393px;
+            height:134px;
+            background-color: #22AC38;
+            border: 3px solid #097C25;
+            border-right: none;
+            border-radius: 67px 0 0 67px;
+            left:1527px;
+            top:64px;
+            padding: 0 0 0 60px;
+        }
+
+        .user_id{
+            height: 60px;
+            line-height:60px;
+            font-size:38px;
+        }
+        .user_status, .last_date{
+            line-height:32px;
+            font-size:22px;
+        }
+    </style>
+</head>
+<body>
+<div id="body_area">
+    <div class="user_msg">
+        <div class="user_id">ID：<span id="uid">9888808988</span></div>
+        <div class="user_status">订购状态：<span id="status">已订购（剩余3天）</span></div>
+        <div class="last_date">有效日期：至<span id="date">2018-09-09</span></div>
+    </div>
+    <div class="item" style="left: 387px;top: 208px;"><img src="../images/order/text.png" alt=""></div>
+    <div class="area area_0">
+        <div class="item" id="area0_item_0" style="left: 277px;top: 416px;">
+            <div class="pic"><img src="../images/order/month.png" alt=""></div>
+            <div class="select"><img src="../images/order/month_s.png" alt=""></div>
+        </div>
+        <div class="item" id="area0_item_1" style="left: 770px;top: 416px;">
+            <div class="pic"><img src="../images/order/season.png" alt=""></div>
+            <div class="select"><img src="../images/order/season_s.png" alt=""></div>
+        </div>
+        <div class="item" id="area0_item_2" style="left: 1257px;top: 416px;">
+            <div class="pic"><img src="../images/order/year.png" alt=""></div>
+            <div class="select"><img src="../images/order/year_s.png" alt=""></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/WkEpg3.0.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    var pageobj;
+    (function(window, document) {
+        var area0;
+        var url = window.location.href;
+        var indexid = !WkEpg.Util.getURLParameter("indexid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("indexid", url)); //焦点数据
+        var areaid = !WkEpg.Util.getURLParameter("areaid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("areaid", url));    //焦点数据
+        var realindex = !WkEpg.Util.getURLParameter("realindex", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("realindex", url));
+        var returnurl = !WkEpg.Util.getURLParameter("returnurl", url) ? "index.html" : decodeURIComponent(WkEpg.Util.getURLParameter("returnurl", url));
+
+        var focusObj = null;
+        var dataObj = null;
+        var controlObj = null;
+
+        //焦点移动类
+        function FocusMove() {
+            this.createArea();
+            this.createFunction();
+        }
+        FocusMove.prototype = {
+            createArea: function(){
+                //@ Array(上、左、下、右)
+                //@ area.stablemoveindex("fromIndex-toId>toIndex")
+                area0 = WkEpg.AreaCreator(1, 3, [-1, -1, -1, -1], "area0_item_", "className:item item_focus", "className:item");
+
+                pageobj = WkEpg.PageCreator(areaid, indexid, new Array(area0));
+            },
+            createFunction: function () {
+                WkEpg.Nav.keyBackEvent = function() {
+                    WkEpg.Util.gotoPage(returnurl);
+                };
+            },
+        };
+
+        //Dom操作类 页面滑动 轮播
+        function DomControl() {
+
+        }
+        DomControl.prototype = {
+
+        };
+
+        //加载数据的类
+        function loadData() {
+            this.getReturnUrl();
+        }
+        loadData.prototype = {
+            getReturnUrl : function(areaid, indexid) {
+                // realindex = (area1.curpage - 1) * pageSize + indexid;
+                if (url.indexOf('?') > 0) {
+                    return url.split('?')[0] + "?realindex=" + realindex + "&areaid=" + areaid + "&indexid=" + indexid + "&returnurl=" + encodeURIComponent(returnurl);
+                } else {
+                    return url + "?realindex=" + realindex + "&areaid=" + areaid + "&indexid=" + indexid + "&returnurl=" + encodeURIComponent(returnurl);
+                }
+            }
+        };
+
+        //初始化
+        window.addEventListener("unload", function() {
+        }, false);
+        window.addEventListener("load", function() {
+            window.focus();
+            if (!focusObj) focusObj = new FocusMove();
+            if (!controlObj) controlObj = new DomControl();
+            if (!dataObj) dataObj = new loadData();
+        }, false);
+    })(window, document);
+</script>
+</body>
+</html>

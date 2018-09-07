@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>科学馆</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body{
+            background: url("../images/kexue/kexue_bg.jpg") no-repeat;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: Microsoft YaHei;
+        }
+
+        .area,
+        .item,
+        .pic,
+        .txt,
+        .no_select,
+        .select,
+        .item_bg{
+            position: absolute;
+        }
+        .no_select{
+            display: block;
+        }
+        .item_focus .no_select{
+            display: none;
+        }
+
+        .area_1 .item .item_bg{
+            width:246px;
+            height:336px;
+            background-color: #643290;
+            -webkit-border-radius:10px;
+            -moz-border-radius:10px;
+            border-radius:10px;
+            z-index:4;
+        }
+        .area_1 .item .pic{
+            position: absolute;
+            left:3px;
+            top:3px;
+            z-index:5;
+        }
+        .area_1 .item .pic img{
+            width:240px;
+            height:286px;
+            border-radius: 7px 7px 0 0;
+        }
+        .area_1 .item .txt{
+            width:240px;
+            height:44px;
+            text-align: center;
+            line-height:44px;
+            font-size:28px;
+            opacity:0.9;
+            background-color: #5F3393;
+            left:3px;
+            top:289px;
+            z-index:5;
+            border-radius: 0 0 7px 7px;
+        }
+
+        #scroll_bar{
+            width:35px;
+            height:719px;
+            background-color: #000;
+            opacity:0.3;
+            border-radius: 16px;
+        }
+        .scrolls{
+            position: absolute;
+        }
+        .scroll{
+            position: relative;
+            line-height:0;
+            left:0;
+            top:0;
+            width:14px;
+            height:10px;
+            background-color: #A77EC2;
+        }
+        .scroll_0{
+            border-radius: 6px 6px 0 0;
+        }
+        .scroll_1{
+            height:133px;
+        }
+        .scroll_2{
+            border-radius: 0 0 6px 6px;
+        }
+        .area_1 .item .select{
+            width:236px;
+            height:326px;
+            -webkit-border-radius:10px;
+            -moz-border-radius:10px;
+            border-radius:10px;
+            border:5px solid #fff;
+            z-index:10;
+        }
+
+        .mysel{
+            width:236px;
+            height:326px;
+            -webkit-border-radius:10px;
+            -moz-border-radius:10px;
+            border-radius:10px;
+            border:5px solid #fff;
+            z-index:10;
+            position: absolute;
+            left:79px;
+            top:163px;
+            opacity:0;
+            -webkit-transition: all 200ms;
+            -moz-transition: all 200ms;
+            -ms-transition: all 200ms;
+            -o-transition: all 200ms;
+            transition: all 200ms;
+        }
+    </style>
+</head>
+<body bgcolor="transparent">
+<div id="body_area">
+    <!--左侧菜单-->
+    <div class="area area_0">
+        <div class="item" id="area0_item_0" style="left:41px;top: 206px;">
+            <div class="pic no_select"><img src="../images/kexue/kexue_left_0.png" alt=""></div>
+            <div class="select" style="left: -5px;top: -2px;"><img src="../images/kexue/kexue_left_0_s.png" alt=""></div>
+        </div>
+        <div class="item" id="area0_item_1" style="left:98px;top:421px;">
+            <div class="pic no_select"><img src="../images/kexue/kexue_left_1.png" alt=""></div>
+            <div class="select" style="left: -5px;top: -5px;"><img src="../images/kexue/kexue_left_1_s.png" alt=""></div>
+        </div>
+        <div class="item" id="area0_item_2" style="left:9px;top:577px;">
+            <div class="pic no_select"><img src="../images/kexue/kexue_left_2.png" alt=""></div>
+            <div class="select" style="left: -5px;top: -5px;"><img src="../images/kexue/kexue_left_2_s.png" alt=""></div>
+        </div>
+    </div>
+    <!--右侧节目-->
+    <div class="area area_1">
+        <!--第一行-->
+        <div class="item" id="area1_item_0" style="left: 406px;top: 188px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area1_pic_0" src="" alt=""></div>
+            <div class="txt" id="area1_txt_0"></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area1_item_1" style="left: 692px;top: 188px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area1_pic_1" src="" alt=""></div>
+            <div class="txt" id="area1_txt_1"></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area1_item_2" style="left: 977px;top: 188px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area1_pic_2" src="" alt=""></div>
+            <div class="txt" id="area1_txt_2"></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area1_item_3" style="left: 1265px;top: 188px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area1_pic_3" src="" alt=""></div>
+            <div class="txt" id="area1_txt_3"></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area1_item_4" style="left: 1554px;top: 188px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area1_pic_4" src="" alt=""></div>
+            <div class="txt" id="area1_txt_4"></div>
+            <div class="select"></div>
+        </div>
+        <!--第二行-->
+        <div class="item" id="area1_item_5" style="left: 406px;top: 574px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area1_pic_5" src="" alt=""></div>
+            <div class="txt" id="area1_txt_5"></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area1_item_6" style="left: 692px;top: 574px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area1_pic_6" src="" alt=""></div>
+            <div class="txt" id="area1_txt_6"></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area1_item_7" style="left: 977px;top: 574px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area1_pic_7" src="" alt=""></div>
+            <div class="txt" id="area1_txt_7"></div>
+            <div class="select"></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area1_item_8" style="left: 1265px;top: 574px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area1_pic_8" src="" alt=""></div>
+            <div class="txt" id="area1_txt_8"></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area1_item_9" style="left: 1554px;top: 574px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area1_pic_9" src="" alt=""></div>
+            <div class="txt" id="area1_txt_9"></div>
+            <div class="select"></div>
+        </div>
+    </div>
+    <!--滚动条-->
+    <div class="item" id="scroll_box" style="left: 1840px;top: 193px;">
+        <div class="item" id="scroll_bar"></div>
+        <div class="scrolls" style="left: 10px;top: 10px;">
+            <div class="scroll scroll_0"></div>
+            <div class="scroll scroll_1"></div>
+            <div class="scroll scroll_2"></div>
+        </div>
+    </div>
+    <!--选中框-->
+    <div class="mysel"></div>
+</div>
+<script type="text/javascript" src="../js/WkEpg3.0.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/config.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+    var pageobj;
+    (function(window, document) {
+        var area0, area1;
+        var url = window.location.href;
+
+        var categoryCode = !WkEpg.Util.getURLParameter("categoryCode", url) ? 1 : parseInt(WkEpg.Util.getURLParameter("categoryCode", url));
+        var indexid = !WkEpg.Util.getURLParameter("indexid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("indexid", url)); //焦点数据
+        var areaid = !WkEpg.Util.getURLParameter("areaid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("areaid", url));    //焦点数据
+        var returnurl = !WkEpg.Util.getURLParameter("returnurl", url) ? "index.html" : decodeURIComponent(WkEpg.Util.getURLParameter("returnurl", url));
+        var bottomindexid = !WkEpg.Util.getURLParameter("bottomindexid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("bottomindexid", url));
+
+        var focusObj = null;
+        var dataObj = null;
+        var controlObj = null;
+
+        var programs = {};
+        var pageSize = 10;
+        var nameCut = 7;
+
+        //焦点移动类
+        function FocusMove() {
+            this.createArea();
+            this.createFunction();
+            this.marqueeName();
+        }
+        FocusMove.prototype = {
+            createArea: function(){
+                //@ Array(上、左、下、右)
+                //@ area.stablemoveindex("fromIndex-toId>toIndex")
+                area0 = WkEpg.AreaCreator(3, 1, [-1, -1, -1, 1], "area0_item_", "className:item item_focus", "className:item");
+                area1 = WkEpg.AreaCreator(2, 5, [-1, 0, -1, -1], "area1_item_", "className:item item_focus", "className:item");
+
+                pageobj = WkEpg.PageCreator(areaid, indexid, new Array(area0, area1));
+
+                area1.setendwiseCrossturnpage(true);
+                area1.curindex = 1;
+                area1.curpage = Math.floor(bottomindexid / pageSize) + 1;//取上级传过来的数据
+                pageobj.changefocus(areaid, indexid);
+            },
+            createFunction: function () {
+                area0.areaOkEvent = function(){
+                    area1.curpage = 1;
+                    categoryCode = NAV[this.curindex];
+                    dataObj.loadPrograms();
+                };
+                area1.areaPageTurnEvent = function (num) {
+                    if (this.pagecount <= 1) {
+                        return;
+                    }
+                    this.lock = false;
+                    dataObj.loadPrograms();
+                };
+
+                WkEpg.Nav.keyBackEvent = function() {
+                    WkEpg.Util.gotoPage(returnurl);
+                };
+            },
+            marqueeName: function () {
+                area0.changefocusAfterEvent = function(){
+                    var x = $('.item_focus').offset();
+                    if(pageobj.curareaid == 0){
+                        $('.mysel').css({
+                            'left': x.left + 'px',
+                            'top': x.top + 'px',
+                            'width': '0px',
+                            'height':  '0px',
+                            'opacity': 0
+                        })
+                    }
+                }
+                area1.changefocusAfterEvent = function() {
+                    if (this.doms[this.curindex] != undefined && WkEpg.Util.getStrRealLen(this.doms[this.curindex].contentName) > nameCut * 2)
+                        $("#area1_txt_" + this.curindex).html("<marquee direction='left' scrolldelay='100'>" + this.doms[this.curindex].contentName + "</marquee>");
+
+                    var x = $('.item_focus').offset();
+                    if(pageobj.curareaid == 1){
+                        $('.mysel').css({
+                            'left': x.left + 'px',
+                            'top': x.top + 'px',
+                            'width': '236px',
+                            'height':  '326px',
+                            'opacity': 1
+                        })
+                    }
+                };
+                area1.changeunfocusBeforeEvent = function() {
+                    if (this.doms[this.curindex] != undefined && WkEpg.Util.getStrRealLen(this.doms[this.curindex].contentName) > nameCut * 2)
+                        $("#area1_txt_" + this.curindex).html(WkEpg.Util.getSubStr(this.doms[this.curindex].contentName, nameCut * 2, true));
+                };
+                if (pageobj.curareaid == 1)
+                    pageobj.areas[pageobj.curareaid].changefocusAfterEvent();
+            }
+        };
+
+        //Dom操作类 页面滑动 轮播
+        function DomControl() {
+            this.changemyselPos();
+        }
+        DomControl.prototype = {
+            changemyselPos: function(){
+                $('.mysel').css({
+                    'left': $('.item_focus').offset().left + 'px',
+                    'top': $('.item_focus').offset().top + 'px',
+                    'width': '0px',
+                    'height':  '0px',
+                    'opacity': 0
+                })
+            },
+            //渲染页面
+            renderPrograms: function(items){
+                for (var i = 0; i < pageSize; i++) {
+                    if(i < items.length ) {
+                        area1.doms[i].contentName = items[i]['name'];
+                        $('#area1_pic_' + i).attr("src", STATIC_RESOUCE_URL + items[i]['posters']['vertical']);
+                        $('#area1_txt_' + i).html(WkEpg.Util.getSubStr(items[i]['name'], nameCut * 2, true));
+                        $('#area1_item_' + i).show();
+                        area1.doms[i].mylink = "detail.html?programid=" + items[i].id + "&returnurl="+ encodeURIComponent(getReturnUrl(window.location.href, 1, i));
+                    } else {
+                        $('#area1_item_' + i).hide();
+                    }
+                }
+
+                area1.lock = false;
+                area1.pageTurnAndChangeFocus();
+                this.costScroll();
+            },
+            //计算滚动条长度，改变滚动条的位置
+            costScroll: function () {
+                if(area1.pagecount>1){
+                    var scrollsH = parseInt($('#scroll_bar').css('height'))/area1.pagecount - 20;
+                    $('.scrolls .scroll_1').css('height', scrollsH);
+                    totalScroll = parseInt($('#scroll_bar').css('height'))-parseInt($('.scrolls').css('height')) - 20;
+                    perScroll = totalScroll/(area1.pagecount-1);
+                    this.perScroll = perScroll;
+                    var top = (area1.curpage - 1) * this.perScroll + 10;
+                    $('.scrolls').css('transition', 'top 200ms');
+                    $('.scrolls').css('top', top);
+                    $('#scroll_box').show();
+                }else{
+                    $('#scroll_box').hide();
+                }
+            },
+        };
+
+        //加载数据的类
+        function loadData() {
+            this.categoryId = 0;
+            this.pageSize = 10;
+            this.loadPrograms();
+        }
+        loadData.prototype = {
+            loadPrograms: function(){
+                $.ajax({
+                    type: "GET",
+                    url: API_URL + "/categories/" + categoryCode + "/programs",
+                    data: {
+                        "page": area1.curpage,
+                        "pageSize": pageSize
+                    },
+                    dataType: "json",
+                    success: function(res) {
+                        console.log(res)
+                        programs = data = res.data;
+                        pagination = res.meta.pagination;
+
+                        //实际数据条目数
+                        area1.datanum = programs.length;
+
+                        //设置总页数
+                        area1.pagecount = pagination.total_pages;
+
+                        controlObj.renderPrograms(programs);
+                    }
+                });
+            },
+        }
+
+        function getReturnUrl(url, areaid, indexid) {
+            bottomindexid = ((area1.curpage - 1) * pageSize + area1.curindex);
+            if (url.indexOf('?') > 0) {
+                return url.split('?')[0] + "?categoryCode=" + categoryCode + "&areaid=" + areaid + "&indexid=" + indexid +  "&bottomindexid=" + bottomindexid +"&returnurl=" + encodeURIComponent(returnurl);
+            } else {
+                return url + "?categoryCode=" + categoryCode + "&areaid=" + areaid + "&indexid=" + indexid + "&bottomindexid=" + bottomindexid + "&returnurl=" + encodeURIComponent(returnurl);
+            }
+        }
+
+        //初始化
+        window.addEventListener("unload", function() {
+        }, false);
+        window.addEventListener("load", function() {
+            window.focus();
+            if (!focusObj) focusObj = new FocusMove();
+            if (!controlObj) controlObj = new DomControl();
+            if (!dataObj) dataObj = new loadData();
+        }, false);
+    })(window, document);
+</script>
+</body>
+</html>

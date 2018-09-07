@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详情页</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            background: url("../images/detail/detail_bg.png") no-repeat;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: Microsoft YaHei;
+        }
+
+        .item,
+        .txt,
+        .pic,
+        .select,
+        .programs,
+        .item_bg,
+        .content,
+        .poster,
+        .mov_list,
+        .num_choose,
+        .num_group,
+        .promotion_logo,
+        .place{
+            position: absolute;
+        }
+
+        .poster{
+            left:230px;
+            top:136px;
+        }
+        .poster .item_bg{
+            width:644px;
+            height:363px;
+            border: 5px solid #DE7132;
+            border-radius: 8px;
+        }
+
+        .content{
+            width:960px;
+            height:387px;
+            background: url("../images/detail/content_bg.png") no-repeat;
+            left:894px;
+            top:123px;
+            padding: 40px 0 0 40px;
+        }
+        .content .title{
+            position: absolute;
+            width:700px;
+            line-height:40px;
+        }
+        .content .title .place{
+            right: 0px;
+            padding:0 10px;
+            line-height:41px;
+            border-radius: 10px;
+            font-size:24px;
+            background-color: #A84200;
+        }
+        .jianjie{
+            /*position: absolute;*/
+            width: 196px;
+            line-height:60px;
+            text-align: center;
+            font-size:26px;
+        }
+        .before{
+            float:left;
+            content:'';
+            width:29px;
+            height:9px;
+            background: url("../images/detail/icon_before.png");
+            margin:25px 0 0 0;
+        }
+        .after{
+            float:right;
+            content:'';
+            width:29px;
+            height:9px;
+            background: url("../images/detail/icon_after.png");
+            margin:25px 0 0 0;
+        }
+
+        .mov_list{
+            width:1000px;
+            font-size:26px;
+            line-height:26px;
+        }
+        .mov_list .num_choose .txt{
+            width:100px;
+            height:49px;
+            font-size:26px;
+            line-height:49px;
+            text-align: center;
+            background-color: #1293E9;
+            border-radius: 10px;
+        }
+        .mov_list .num_choose .item_focus .txt{
+            background-color: #FF6634;
+            border: 3px solid #fff;
+            line-height:43px;
+        }
+        .mov_list .num_group .txt{
+            text-align: center;
+            width:111px;
+            height:48px;
+            line-height:48px;
+            font-size:26px;
+            color: #fff;
+        }
+
+        .programs .item .item_bg{
+            width: 169px;
+            height:231px;
+            border-radius: 10px;
+            background-color: #493FC8;
+        }
+        .programs .item .pic{
+            left:4px;
+            top:4px;
+        }
+        .programs .item .pic img{
+            width:161px;
+            height:223px;
+            border-radius: 7px;
+        }
+        .programs .item .select{
+            width:169px;
+            height:231px;
+            border-radius: 10px;
+            border: 5px solid #fff;
+        }
+        .programs .item .txt{
+            width:169px;
+            text-align: center;
+            height:44px;
+            line-height:44px;
+            top:231px;
+        }
+    </style>
+</head>
+<body>
+<div id="body_area">
+    <div class="detail_wrapper">
+        <div class="poster">
+            <div class="item_bg"></div>
+            <div class="pic" style="left: 5px;top: 5px;"><img src="" alt="" id="poster" width="633" height="353"></div>
+            <div class="item">
+                <div class="pic" style="left: 265px;top: 133px;display: block;"><img src="../images/detail/icon_play.png" alt=""></div>
+                <div class="pic" style="left: 265px;top: 133px;display: none;"><img src="../images/detail/icon_pause.png" alt=""></div>
+                <div class="pic" style="left: 585px;top: 319px;display: none;"><img src="../images/detail/icon_full.png" alt=""></div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="title">
+                <span id="detail_name" style="font-size: 40px;color:#FFFC07;"></span>
+                <span class="place"></span>
+            </div>
+            <div class="txt" style="font-size: 24px;line-height:36px;width:708px;top:87px;">
+                <div class="jianjie"><i class="before"></i>影片简介<i class="after"></i></div>
+                <div id="detail_summary" style="position: ;top: 60px;"></div>
+            </div>
+            <div class="area area_0">
+                <div class="item" id="area0_item_0" style="top: 274px;">
+                    <div class="pic"><img src="../images/detail/btn_play.png" alt=""></div>
+                    <div class="select" style="left: -3px;top: -1px;"><img src="../images/detail/btn_play_s.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mov_list">
+        <div class="jianjie" style="position: absolute;left: 250px;top:511px;"><i class="before"></i>剧集列表<i class="after"></i></div>
+        <div class="num_group" style="left: 250px;top: 580px;">
+            <div class="item" id="area1_item_0">
+                <div class="pic"><img src="../images/detail/num_group.png" alt=""></div>
+                <div class="select"><img src="../images/detail/num_group_s.png" alt=""></div>
+                <div class="txt"></div>
+            </div>
+            <div class="item" id="area1_item_1" style="left: 131px;">
+                <div class="pic"><img src="../images/detail/num_group.png" alt=""></div>
+                <div class="select"><img src="../images/detail/num_group_s.png" alt=""></div>
+                <div class="txt"></div>
+            </div>
+            <div class="item" id="area1_item_2" style="left: 262px;">
+                <div class="pic"><img src="../images/detail/num_group.png" alt=""></div>
+                <div class="select"><img src="../images/detail/num_group_s.png" alt=""></div>
+                <div class="txt"></div>
+            </div>
+            <div class="item" id="area1_item_3" style="left: 393px;">
+                <div class="pic"><img src="../images/detail/num_group.png" alt=""></div>
+                <div class="select"><img src="../images/detail/num_group_s.png" alt=""></div>
+                <div class="txt"></div>
+            </div>
+            <div class="item" id="area1_item_4" style="left: 524px;">
+                <div class="pic"><img src="../images/detail/num_group.png" alt=""></div>
+                <div class="select"><img src="../images/detail/num_group_s.png" alt=""></div>
+                <div class="txt"></div>
+            </div>
+            <div class="item" id="area1_item_5" style="left: 655px;">
+                <div class="pic"><img src="../images/detail/num_group.png" alt=""></div>
+                <div class="select"><img src="../images/detail/num_group_s.png" alt=""></div>
+                <div class="txt"></div>
+            </div>
+            <div class="item" id="area1_item_6" style="left: 786px;">
+                <div class="pic"><img src="../images/detail/num_group.png" alt=""></div>
+                <div class="select"><img src="../images/detail/num_group_s.png" alt=""></div>
+                <div class="txt"></div>
+            </div>
+            <div class="item" id="area1_item_7" style="left: 917px;">
+                <div class="pic"><img src="../images/detail/num_group.png" alt=""></div>
+                <div class="select"><img src="../images/detail/num_group_s.png" alt=""></div>
+                <div class="txt"></div>
+            </div>
+            <div class="item" id="area1_item_8" style="left: 1048px;">
+                <div class="pic"><img src="../images/detail/num_group.png" alt=""></div>
+                <div class="select"><img src="../images/detail/num_group_s.png" alt=""></div>
+                <div class="txt"></div>
+            </div>
+            <div class="item" id="area1_item_9" style="left: 1179px;">
+                <div class="pic"><img src="../images/detail/num_group.png" alt=""></div>
+                <div class="select"><img src="../images/detail/num_group_s.png" alt=""></div>
+                <div class="txt"></div>
+            </div>
+            <div class="item" id="area1_item_10" style="left: 1310px;">
+                <div class="pic"><img src="../images/detail/num_group.png" alt=""></div>
+                <div class="select"><img src="../images/detail/num_group_s.png" alt=""></div>
+                <div class="txt"></div>
+            </div>
+        </div>
+        <div class="num_choose" style="left: 250px;top: 656px;">
+            <div class="item" id="area2_item_0">
+                <div class="select"></div>
+                <div class="txt">1</div>
+            </div>
+            <div class="item" id="area2_item_1" style="left: 119px;">
+                <div class="select"></div>
+                <div class="txt">2</div>
+            </div>
+            <div class="item" id="area2_item_2" style="left: 240px;">
+                <div class="select"></div>
+                <div class="txt">3</div>
+            </div>
+            <div class="item" id="area2_item_3" style="left: 360px;">
+                <div class="select"></div>
+                <div class="txt">4</div>
+            </div>
+            <div class="item" id="area2_item_4" style="left: 479px;">
+                <div class="select"></div>
+                <div class="txt">5</div>
+            </div>
+            <div class="item" id="area2_item_5" style="left: 600px;">
+                <div class="select"></div>
+                <div class="txt">6</div>
+            </div>
+            <div class="item" id="area2_item_6" style="left: 719px;">
+                
+                <div class="select"></div>
+                <div class="txt">7</div>
+            </div>
+            <div class="item" id="area2_item_7" style="left: 838px;">
+                <div class="select"></div>
+                <div class="txt">8</div>
+            </div>
+            <div class="item" id="area2_item_8" style="left: 959px;">
+                <div class="select"></div>
+                <div class="txt">9</div>
+            </div>
+            <div class="item" id="area2_item_9" style="left: 1079px;">
+                <div class="select"></div>
+                <div class="txt">10</div>
+            </div>
+            <div class="item" id="area2_item_10" style="left: 1198px;">
+                <div class="select"></div>
+                <div class="txt">11</div>
+            </div>
+            <div class="item" id="area2_item_11" style="left: 1319px;">
+                <div class="select"></div>
+                <div class="txt">12</div>
+            </div>
+        </div>
+    </div>
+    <div class="programs" style="left: 271px;top: 770px;">
+        <div class="promotion_logo"><img src="../images/detail/promotion_logo.png" alt=""></div>
+        <div class="item" id="area3_item_0" style="left: 109px;top: 3px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area3_pic_0" src="" alt=""></div>
+            <div class="select"></div>
+            <div class="txt" id="area3_txt_0"></div>
+        </div>
+        <div class="item" id="area3_item_1" style="left: 333px;top: 3px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area3_pic_1" src="" alt=""></div>
+            <div class="select"></div>
+            <div class="txt" id="area3_txt_1"></div>
+        </div>
+        <div class="item" id="area3_item_2" style="left: 557px;top: 3px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area3_pic_2" src="" alt=""></div>
+            <div class="select"></div>
+            <div class="txt" id="area3_txt_2"></div>
+        </div>
+        <div class="item" id="area3_item_3" style="left: 778px;top: 3px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area3_pic_3" src="" alt=""></div>
+            <div class="select"></div>
+            <div class="txt" id="area3_txt_3"></div>
+        </div>
+        <div class="item" id="area3_item_4" style="left: 1002px;top: 3px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area3_pic_4" src="" alt=""></div>
+            <div class="select"></div>
+            <div class="txt" id="area3_txt_4"></div>
+        </div>
+        <div class="item" id="area3_item_5" style="left: 1231px;top: 3px;">
+            <div class="item_bg"></div>
+            <div class="pic"><img id="area3_pic_5" src="" alt=""></div>
+            <div class="select"></div>
+            <div class="txt" id="area3_txt_5"></div>
+        </div>
+    </div>
+</div>
+
+<iframe id="hidden_frame" name="hidden_frame" style="width: 0px;height: 0px;" src=""></iframe>
+
+<script type="text/javascript" src="../js/WkEpg3.0.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/config.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script>
+    //    var CORE_INFO = JSON.parse(getCookie("CORE_INFO"));
+    //    if (!(typeof(CORE_INFO) == 'object'))
+    //        CORE_INFO = JSON.parse(CORE_INFO);
+    var pageobj;
+    (function(window, document) {
+        var area0, area1, area2, area3;
+        var url = window.location.href;
+        var indexid = !WkEpg.Util.getURLParameter("indexid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("indexid", url)); //焦点数据
+        var areaid = !WkEpg.Util.getURLParameter("areaid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("areaid", url));    //焦点数据
+        var returnurl = !WkEpg.Util.getURLParameter("returnurl", url) ? "index.html" : decodeURIComponent(WkEpg.Util.getURLParameter("returnurl", url));
+        var programid = !WkEpg.Util.getURLParameter("programid", url) ? 1 : parseInt(WkEpg.Util.getURLParameter("programid", url));
+        var categoryCode = !WkEpg.Util.getURLParameter("categoryCode", url) ? REC_CATEGORY : WkEpg.Util.getURLParameter("categoryCode", url);
+
+        var focusObj = null;
+        var dataObj = null;
+        var controlObj = null;
+        var pageSize = 6;
+        var nameCut = 6;
+        var programs = '';
+        var episodeGroupSize = 11;
+
+        //焦点移动类
+        function FocusMove() {
+            this.createArea();
+            this.createFunction();
+            this.marqueeName();
+        }
+        FocusMove.prototype = {
+            createArea: function(){
+                //@ Array(上、左、下、右)
+                //@ area.stablemoveindex("fromIndex-toId>toIndex")
+                area0 = WkEpg.AreaCreator(1, 1, [-1, -1, 1, -1], "area0_item_", "className:item item_focus", "className:item");
+                area1 = WkEpg.AreaCreator(1, 11, [0, -1, 2, -1], "area1_item_", "className:item item_focus", "className:item");
+                area2 = WkEpg.AreaCreator(1, 12, [1, -1, 3, -1], "area2_item_", "className:item item_focus", "className:item");
+                area3 = WkEpg.AreaCreator(1, 6, [2, -1, -1, -1], "area3_item_", "className:item item_focus", "className:item");
+
+                area1.setbroadwiseCrossturnpage(true);//设置横向自动翻页
+                area1.curpage = 1;
+                area2.setbroadwiseCrossturnpage(true);
+                area2.curpage = 1;
+
+                pageobj = WkEpg.PageCreator(areaid, indexid, new Array(area0, area1, area2, area3));
+                area1.setDarkfocus(area1.curpage, area1.curindex, new Array("className:item item_focus"), new Array("className:item item_select")); //设置暗焦点
+            },
+            createFunction: function () {
+                area0.areaOkEvent = function(){
+                    WkEpg.Util.gotoPage("../player/playControlVod.html?programid="+ dataObj.programID + "&episodeid=" + controlObj.episodes[0]['id'] + "&returnurl="+ encodeURIComponent(url));
+                }
+                area1.areaOkEvent = function(){
+                    area2.curpage = area1.curindex + 1 + (area1.curpage - 1) * episodeGroupSize;
+                    controlObj.renderEpisodeNumbers();
+                    console.log(area2.curpage)
+                }
+                area1.areaPageTurnEvent = function(){
+                    if (this.pagecount <= 1) {
+                        return;
+                    }
+                    this.lock = false;
+
+                    controlObj.renderEpisodeGroup();
+                }
+                area2.areaPageTurnEvent = function(){
+                    if (this.pagecount <= 1) {
+                        return;
+                    }
+                    this.lock = false;
+
+                    controlObj.renderEpisodeNumbers();
+                    controlObj.renderEpisodeGroup();
+                }
+
+                WkEpg.Nav.keyBackEvent = function() {
+                    WkEpg.Util.gotoPage(returnurl);
+                };
+            },
+            marqueeName: function () {
+                area3.changefocusAfterEvent = function() {
+                    if (this.doms[this.curindex] != undefined && WkEpg.Util.getStrRealLen(this.doms[this.curindex].contentName) > nameCut * 2)
+                        $("#area3_txt_" + this.curindex).html("<marquee direction='left' scrolldelay='100'>" + this.doms[this.curindex].contentName + "</marquee>");
+                };
+                area3.changeunfocusBeforeEvent = function() {
+                    if (this.doms[this.curindex] != undefined && WkEpg.Util.getStrRealLen(this.doms[this.curindex].contentName) > nameCut * 2)
+                        $("#area3_txt_" + this.curindex).html(WkEpg.Util.getSubStr(this.doms[this.curindex].contentName, nameCut * 2, true));
+                };
+                if (pageobj.curareaid == 4)
+                    pageobj.areas[pageobj.curareaid].changefocusAfterEvent();
+            }
+        };
+
+        //Dom操作类 页面滑动 轮播
+        function DomControl() {
+            this.episodeSize = 12;
+            this.episodeCount = '';
+            this.episodes = '';
+            this.episodeGroupSize = 11;
+        }
+        DomControl.prototype = {
+            renderProgramDetail: function(program){
+//                program['episodeCount'] = 200;
+                $("#poster").attr("src", STATIC_RESOUCE_URL + program['posters']['horizontal']);
+                $(".place").html(program['country']);
+                $("#detail_name").html(program['name']);
+                $("#detail_summary").html(WkEpg.Util.getSubStr(program['introduce'], 150, true));
+                $("#episodeCount").html("（共" + program['episodeCount'] + "集）");
+
+                area2.pagecount = Math.ceil(program['episodeCount'] / this.episodeSize);
+                area1.pagecount = Math.ceil(area2.pagecount / this.episodeGroupSize);
+
+                area3.datanum = program['programs'].length;
+
+                this.episodeCount = program['episodeCount'];
+
+                this.episodes = program['episodes'];
+
+                this.renderEpisodeGroup();
+                this.renderEpisodeNumbers();
+                this.renderPromotionData();
+            },
+            renderEpisodeGroup: function(){
+                if(area1.curpage == area1.pagecount){
+                    area1.datanum = area2.pagecount % this.episodeGroupSize;
+                    area1.datanum = area1.datanum == 0 ? this.episodeGroupSize : area1.datanum;
+                }else{
+                    area1.datanum = this.episodeGroupSize;
+                }
+                for(var i = 0; i < this.episodeGroupSize; i++ ) {
+                    if(i < area1.datanum){
+                        var lastNum = area1.curpage == area1.pagecount && (i == area1.datanum - 1) ? this.episodeCount : (i + 1) * this.episodeSize +  (area1.curpage - 1) * this.episodeGroupSize * this.episodeSize;
+                        $("#area1_item_"+ i + " .txt").html(i * this.episodeSize + 1 + (area1.curpage - 1) * this.episodeSize * this.episodeGroupSize + "-" + lastNum);
+                        $("#area1_item_" + i).show();
+                    }else{
+                        $("#area1_item_" + i).hide();
+                    }
+                }
+            },
+            renderEpisodeNumbers: function(){
+                if(area2.curpage == area2.pagecount) {
+                    area2.datanum = this.episodeCount % this.episodeSize;
+                    area2.datanum = area2.datanum == 0 ? this.episodeSize : area2.datanum;
+                } else {
+                    area2.datanum = this.episodeSize;
+                }
+                area1.curpage = Math.ceil(area2.curpage / this.episodeGroupSize);
+
+                for(var i = 0; i < this.episodeSize; i++ ) {
+                    if(i < area2.datanum) {
+                        $("#area2_item_"+ i).find('.txt').html((area2.curpage - 1) * this.episodeSize + i + 1);
+                        $("#area2_item_"+ i).show();
+                    } else {
+                        $("#area2_item_"+ i).hide();
+                    }
+                }
+                area2.lock = false;
+            },
+            renderPromotionData: function(){
+                for(var i = 0;i < pageSize; i++){
+                    if(i < area3.datanum ) {
+                        area3.doms[i].contentName = program.programs[i]['name'];
+                        $('#area3_pic_' + i).attr("src", STATIC_RESOUCE_URL + program['programs'][i]['posters']['vertical']);
+                        $('#area3_txt_' + i).html(WkEpg.Util.getSubStr(program.programs[i]['name'], nameCut * 2, true));
+                        $('#area3_' + i).show();
+                        area3.doms[i].mylink = "detail.html?programid=" + program.programs[i].id + "&returnurl="+ encodeURIComponent(url);
+                    } else {
+                        $('#area3_' + i).hide();
+                    }
+                }
+            }
+        };
+
+        //加载数据的类
+        function loadData() {
+            this.programID = programid;
+            this.loadPromotionDetail(this.programID);
+        }
+        loadData.prototype = {
+            loadPromotionDetail: function(programID){
+                $.ajax({
+                    type: "GET",
+                    url: API_URL + "/programs/" + programID,
+                    data: {
+                        "userID": USERID,
+                        "timestamp": new Date().getTime()
+                    },
+                    dataType: "json",
+                    success: function(res) {
+                        program = data = res.data;
+
+                        controlObj.renderProgramDetail(program);
+//                        dataObj.getAuthData();
+                    }
+                });
+            },
+            getAuthData: function(){
+                if (AUTH_LOCK && categoryCode != FREEAREA) {
+                    this.auth();
+                }
+            },
+            auth: function(){
+                $("#hidden_frame").attr('src', CORE_INFO.serverPath + "service/" + CORE_INFO.partner + "Auth.jsp?contentID=" + vodDetails.resultSet[0].csp_code + "&inIFrame=1&onSuccess=doAuthCode&onError=0");
+            },
+            doAuthCode: function(){
+                var authData = eval("(" + data + ")");
+                if (authData.businessCode == "success") {
+                    if (authData.resultSet[0].resultCode == "0" || authData.resultSet[0].resultCode == "9304") {//已订购
+                        $("area3_0").style.visibility = "hidden";
+                        area0.directions = new Array(0, -1, 2, 3);
+                    } else if (authData.resultSet[0].resultCode == "9303") {//未订购
+                        $("area3_0").style.visibility = "visible";
+                        area0.directions = new Array(0, 4, 2, 3);
+                    }
+                } else {
+                    //鉴权异常
+                }
+            }
+        };
+
+        function getReturnUrl(url, areaid, indexid) {
+            bottomindexid = ((area1.curpage - 1) * pageSize + area1.curindex);
+            if (url.indexOf('?') > 0) {
+                return url.split('?')[0] + "?categoryCode=" + categoryCode + "&areaid=" + areaid + "&indexid=" + indexid +  "&bottomindexid=" + bottomindexid +"&returnurl=" + encodeURIComponent(returnurl);
+            } else {
+                return url + "?categoryCode=" + categoryCode + "&areaid=" + areaid + "&indexid=" + indexid + "&bottomindexid=" + bottomindexid + "&returnurl=" + encodeURIComponent(returnurl);
+            }
+        }
+
+        //初始化
+        window.addEventListener("unload", function() {
+        }, false);
+        window.addEventListener("load", function() {
+            window.focus();
+            if (!focusObj) focusObj = new FocusMove();
+            if (!controlObj) controlObj = new DomControl();
+            if (!dataObj) dataObj = new loadData();
+        }, false);
+    })(window, document);
+</script>
+</body>
+</html>

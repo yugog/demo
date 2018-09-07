@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宝藏 - 首页</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: Microsoft YaHei;
+        }
+        #body_area{
+            width:1920px;
+            height:1080px;
+            overflow: hidden;
+            background: url("../images/treasure_index/treasure_index_bg.jpg") no-repeat;
+        }
+        .area,
+        .item,
+        .pic,
+        .txt,
+        .select{
+            position: absolute;
+        }
+
+        .area_0{
+            width:1382px;
+            height:741px;
+            /*overflow: hidden;*/
+        }
+        .area_0 .item .item_bg{
+            width:308px;
+            height:360px;
+            background: url("../images/treasure_index/item_bg.png");
+        }
+        .area_0 .item .box{
+            left:97px;
+            top:-30px;
+        }
+        .area_0 .item .poster{
+            left:56px;
+            top:79px;
+            width:225px;
+            height:160px;
+            background-color: #A85F27;
+        }
+        .area_0 .item .poster img{
+            position: absolute;
+            left:2px;
+            top:2px;
+        }
+        .area_0 .item .title{
+            width:225px;
+            height:45px;
+            text-align: center;
+            line-height:45px;
+            color: #7B3709;
+            left:56px;
+            top:239px;
+            font-size:26px;
+        }
+        .area_0 .item .int{
+            left:73px;
+            top:284px;
+            width:185px;
+            height:34px;
+            text-align: center;
+            line-height:34px;
+            font-size:14px;
+        }
+        .area_0 .item .int.uncomplete{
+            display: block;
+        }
+        .area_0 .item .int.complete{
+            padding:0 0 0 20px;
+            background: url("../images/treasure_index/bean.png") no-repeat 20px center;
+            display: none;
+        }
+        .area_0 .item .btn{
+            left:79px;
+            top:370px;
+        }
+        .area_0 .item .btn img{
+            vertical-align: top;
+        }
+        .area_0 .item .select{
+            width:159px;
+            height:51px;
+            border:5px solid #fff;
+            border-radius: 25px;
+            left:79px;
+            top:370px;
+        }
+    </style>
+</head>
+<body>
+<div id="body_area">
+    <div class="area area_0" style="left: 269px;top: 339px;">
+        <!--第一行-->
+        <div class="item" id="area0_item_0">
+            <div class="item_bg"></div>
+            <div class="pic box"><img src="../images/treasure_index/box_uncomplete.png" alt="" id="area0_box_0"></div>
+            <div class="pic poster"><img src="../images/treasure_index/img0.jpg" alt="" id="area0_pic_0"></div>
+            <div class="txt title" id="area0_txt_0">超级飞侠第一季</div>
+            <div class="txt int uncomplete">玩任务，开宝箱赚学豆</div>
+            <div class="txt int complete">获得<span id="area0_num_0">25</span>颗学豆</div>
+            <div class="item btn"><img src="../images/treasure_index/btn_go.png" alt=""></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area0_item_1" style="left: 350px;">
+            <div class="item_bg"></div>
+            <div class="pic box"><img src="../images/treasure_index/box_uncomplete.png" alt="" id="area0_box_1"></div>
+            <div class="pic poster"><img src="../images/treasure_index/img0.jpg" alt="" id="area0_pic_1"></div>
+            <div class="txt title" id="area0_txt_1">汪汪队立大功第二季</div>
+            <div class="txt int uncomplete">玩任务，开宝箱赚学豆</div>
+            <div class="txt int complete">获得<span id="area0_num_1">25</span>颗学豆</div>
+            <div class="item btn"><img src="../images/treasure_index/btn_go.png" alt=""></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area0_item_2" style="left: 709px;">
+            <div class="item_bg"></div>
+            <div class="pic box"><img src="../images/treasure_index/box_uncomplete.png" alt="" id="area0_box_2"></div>
+            <div class="pic poster"><img src="../images/treasure_index/img0.jpg" alt="" id="area0_pic_2"></div>
+            <div class="txt title" id="area0_txt_2">海底小纵队第二季</div>
+            <div class="txt int uncomplete">玩任务，开宝箱赚学豆</div>
+            <div class="txt int complete">获得<span id="area0_num_2">25</span>颗学豆</div>
+            <div class="item btn"><img src="../images/treasure_index/btn_go.png" alt=""></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area0_item_3" style="left: 1069px;">
+            <div class="item_bg"></div>
+            <div class="pic box"><img src="../images/treasure_index/box_uncomplete.png" alt="" id="area0_box_3"></div>
+            <div class="pic poster"><img src="../images/treasure_index/img0.jpg" alt="" id="area0_pic_3"></div>
+            <div class="txt title" id="area0_txt_3">小小画家熊小米</div>
+            <div class="txt int uncomplete">玩任务，开宝箱赚学豆</div>
+            <div class="txt int complete">获得<span id="area0_num_3">25</span>颗学豆</div>
+            <div class="item btn"><img src="../images/treasure_index/btn_go.png" alt=""></div>
+            <div class="select"></div>
+        </div>
+        <!--第二行-->
+        <div class="item" id="area0_item_4" style="top: 510px;">
+            <div class="item_bg"></div>
+            <div class="pic box"><img src="../images/treasure_index/box_uncomplete.png" alt="" id="area0_box_4"></div>
+            <div class="pic poster"><img src="../images/treasure_index/img0.jpg" alt="" id="area0_pic_4"></div>
+            <div class="txt title" id="area0_txt_4">萌鸡小队</div>
+            <div class="txt int uncomplete">玩任务，开宝箱赚学豆</div>
+            <div class="txt int complete">获得<span id="area0_num_4">25</span>颗学豆</div>
+            <div class="item btn"><img src="../images/treasure_index/btn_go.png" alt=""></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area0_item_5" style="left: 350px;top: 510px;">
+            <div class="item_bg"></div>
+            <div class="pic box"><img src="../images/treasure_index/box_uncomplete.png" alt="" id="area0_box_5"></div>
+            <div class="pic poster"><img src="../images/treasure_index/img0.jpg" alt="" id="area0_pic_5"></div>
+            <div class="txt title" id="area0_txt_5">京剧猫之新年的冒险</div>
+            <div class="txt int uncomplete">玩任务，开宝箱赚学豆</div>
+            <div class="txt int complete">获得<span id="area0_num_5">25</span>颗学豆</div>
+            <div class="item btn"><img src="../images/treasure_index/btn_go.png" alt=""></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area0_item_6" style="left: 709px;top: 510px;">
+            <div class="item_bg"></div>
+            <div class="pic box"><img src="../images/treasure_index/box_uncomplete.png" alt="" id="area0_box_6"></div>
+            <div class="pic poster"><img src="../images/treasure_index/img0.jpg" alt="" id="area0_pic_6"></div>
+            <div class="txt title" id="area0_txt_6">超星萌宠第四季</div>
+            <div class="txt int uncomplete">玩任务，开宝箱赚学豆</div>
+            <div class="txt int complete">获得<span id="area0_num_6">25</span>颗学豆</div>
+            <div class="item btn"><img src="../images/treasure_index/btn_go.png" alt=""></div>
+            <div class="select"></div>
+        </div>
+        <div class="item" id="area0_item_7" style="left: 1069px;top: 510px;">
+            <div class="item_bg"></div>
+            <div class="pic box"><img src="../images/treasure_index/box_uncomplete.png" alt="" id="area0_box_7"></div>
+            <div class="pic poster"><img src="../images/treasure_index/img0.jpg" alt="" id="area0_pic_7"></div>
+            <div class="txt title" id="area0_txt_7">三只松鼠第一部</div>
+            <div class="txt int uncomplete">玩任务，开宝箱赚学豆</div>
+            <div class="txt int complete">获得<span id="area0_num_7">25</span>颗学豆</div>
+            <div class="item btn"><img src="../images/treasure_index/btn_go.png" alt=""></div>
+            <div class="select"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/WkEpg3.0.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    var pageobj;
+    (function(window, document) {
+        var area0;
+        var url = window.location.href;
+        var indexid = !WkEpg.Util.getURLParameter("indexid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("indexid", url)); //焦点数据
+        var areaid = !WkEpg.Util.getURLParameter("areaid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("areaid", url));    //焦点数据
+        var returnurl = !WkEpg.Util.getURLParameter("returnurl", url) ? "index.html" : decodeURIComponent(WkEpg.Util.getURLParameter("returnurl", url));
+
+        var focusObj = null;
+        var dataObj = null;
+        var controlObj = null;
+        var nameCut = 9;
+        var pageSize = 8;
+
+        //焦点移动类
+        function FocusMove() {
+            this.createArea();
+            this.createFunction();
+            this.marqueeName();
+        }
+        FocusMove.prototype = {
+            createArea: function(){
+                //@ Array(上、左、下、右)
+                //@ area.stablemoveindex("fromIndex-toId>toIndex")
+                area0 = WkEpg.AreaCreator(2, 4, [-1, -1, -1, -1], "area0_item_", "className:item item_focus", "className:item");
+
+                pageobj = WkEpg.PageCreator(areaid, indexid, new Array(area0));
+            },
+            createFunction: function () {
+                area0.areaOkEvent = function(){
+                    window.location.href = 'treasure_detail.html?returnurl=' + encodeURIComponent(getReturnUrl(window.location.href, 0, this.curindex));
+                };
+                WkEpg.Nav.keyBackEvent = function() {
+                    WkEpg.Util.gotoPage(returnurl);
+                };
+            },
+            marqueeName: function(){
+                area0.changefocusAfterEvent = function() {
+                    if (this.doms[this.curindex] != undefined && WkEpg.Util.getStrRealLen(this.doms[this.curindex].contentName) > nameCut * 2)
+                        $("#area0_txt_" + this.curindex).html("<marquee direction='left' scrolldelay='100'>" + this.doms[this.curindex].contentName + "</marquee>");
+                    if(this.curindex > 3){
+                        $('.area_0').offset().top = ($('.area_0').offset().top - 510) + 'px';
+                    }
+                };
+                area0.changeunfocusBeforeEvent = function() {
+                    if (this.doms[this.curindex] != undefined && WkEpg.Util.getStrRealLen(this.doms[this.curindex].contentName) > nameCut * 2)
+                        $("#area0_txt_" + this.curindex).html(WkEpg.Util.getSubStr(this.doms[this.curindex].contentName, nameCut * 2, true));
+                };
+            }
+        };
+
+        //Dom操作类
+        function DomControl() {
+
+        }
+        DomControl.prototype = {
+
+        };
+
+        //加载数据的类
+        function loadData() {
+
+        }
+        loadData.prototype = {
+
+        }
+
+        function getReturnUrl(url, areaid, indexid) {
+            bottomindexid = ((area0.curpage - 1) * pageSize + area0.curindex);
+            if (url.indexOf('?') > 0) {
+                return url.split('?')[0] + "?areaid=" + areaid + "&indexid=" + indexid +  "&returnurl=" + encodeURIComponent(returnurl);
+            } else {
+                return url + "?areaid=" + areaid + "&indexid=" + indexid + "&returnurl=" + encodeURIComponent(returnurl);
+            }
+        }
+
+        //初始化
+        window.addEventListener("unload", function() {
+        }, false);
+        window.addEventListener("load", function() {
+            window.focus();
+            if (!focusObj) focusObj = new FocusMove();
+            if (!controlObj) controlObj = new DomControl();
+            if (!dataObj) dataObj = new loadData();
+        }, false);
+    })(window, document);
+</script>
+</body>
+</html>

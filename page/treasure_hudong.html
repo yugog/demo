@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宝藏 - 互动页</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: Microsoft YaHei;
+        }
+        img{
+            vertical-align: top;
+        }
+        .area,
+        .item,
+        .pic,
+        .txt,
+        .select{
+            position: absolute;
+        }
+        .hide{
+            display: none !important;
+        }
+
+        #body{
+            position: absolute;
+            width:1920px;
+            height:1080px;
+            background: url("../images/treasure_hudong/dark_bg.png");
+        }
+
+        .preview .title{
+            width:771px;
+            height:86px;
+            text-align: center;
+            line-height:86px;
+            font-size:24px;
+            background: url("../images/treasure_hudong/title_bg.png");
+            border-radius:32px;
+        }
+        .preview .mission_box{
+            width:563px;
+            height:723px;
+            background: url("../images/treasure_hudong/mission_bg.png");
+        }
+        #area0_item_0{
+            width:261px;
+            height:84px;
+            text-align: center;
+            line-height:84px;
+            background: url("../images/treasure_hudong/btn_jump_bg.png");
+            font-size:40px;
+            -webkit-text-stroke: 1px #FF452A;
+        }
+
+        .mission_wrapper .mission{
+            width:474px;
+            height:146px;
+            padding: 20px 0 0 87px;
+            background: url("../images/treasure_hudong/bulb.png") no-repeat 0 center;
+            border-bottom:1px dashed #E66660;
+        }
+        .mission_wrapper .mission:last-child{
+            border-bottom:none;
+        }
+        .mission_wrapper .mission .tit{
+            color: #E76660;
+            font-size:38px;
+            line-height:56px;
+        }
+        .mission_wrapper .mission .ques{
+            color: #484848;
+            font-size:32px;
+            line-height:40px;
+        }
+        
+        .area_1 .item{
+            width:211px;
+            height:67px;
+            background: url("../images/treasure_hudong/btn_bg.png");
+            font-size:36px;
+            text-align: center;
+            line-height:66px;
+            -webkit-text-stroke: 1px #E38F3D;
+        }
+        .area_1 .item_focus{
+            background-image: url("../images/treasure_hudong/btn_bg_s.png");
+            -webkit-text-stroke: 1px #FF452A;
+        }
+
+        .subject .title{
+            width:1070px;
+            height:110px;
+            background-color: #59493F;
+            color:#FFEA00;
+            border: 5px solid #F19149;
+            border-radius:32px;
+            font-size:48px;
+            font-weight:bold;
+            text-align: center;
+            line-height:100px;
+        }
+        .subject .options .item{
+            width:335px;
+            height:373px;
+            background: url("../images/treasure_hudong/answer_bg.png");
+        }
+        .subject .options .item_focus{
+            background-image: url("../images/treasure_hudong/answer_bg_s.png");
+        }
+        .subject .options .item .pic{
+            left: 35px;
+            top: 20px;
+        }
+        .subject .options .item img{
+            width:259px;
+            height:259px;
+            border-radius: 50%;
+        }
+        .subject .options .item .txt{
+            top:297px;
+            width:335px;
+            height:76px;
+            text-align: center;
+            line-height:76px;
+            font-size: 44px;
+            color: #F19149;
+        }
+        .subject .options .item .right{
+            width:145px;
+            height:112px;
+            background: url("../images/treasure_hudong/right.png");
+            position: absolute;
+            left:291px;
+            top:288px;
+        }
+        .subject .options .item .wrong{
+            width:117px;
+            height:117px;
+            background: url("../images/treasure_hudong/wrong.png");
+            position: absolute;
+            left:306px;
+            top:283px;
+        }
+
+        .finish{
+            width:784px;
+            height:769px;
+            background: url("../images/treasure_hudong/finish_bg.png");
+            position: absolute;
+            left:176px;
+            top:119px;
+        }
+        .finish_wrapper .finish_mission{
+            width:476px;
+            height:155px;
+            padding: 20px 0 0 87px;
+            border-bottom:1px dashed #E66660;
+            position: absolute;
+        }
+        .finish_wrapper .finish_mission:last-child{
+            border-bottom:none;
+        }
+        .finish_wrapper .finish_mission .pic{
+            left:-10px;
+            top:44px;
+        }
+        .finish_wrapper .finish_mission .tit{
+            color: #E76660;
+            font-size:38px;
+            line-height:56px;
+        }
+        .finish_wrapper .finish_mission .beanNum{
+            position: absolute;
+            width:119px;
+            height:47px;
+            line-height:47px;
+            color: #E76A64;
+            font-size:30px;
+            padding-left:54px;
+            background: url("../images/treasure_hudong/bean.png") no-repeat left center;
+            left:357px;
+            top:30px;
+        }
+        .finish_wrapper .finish_mission .ques{
+            color: #484848;
+            font-size:32px;
+            line-height:40px;
+        }
+
+        .get_bean .txt{
+            font-size:80px;
+            left:456px;
+            top:108px;
+            line-height:70px;
+        }
+    </style>
+</head>
+<body bgcolor="transparent">
+<div id="body">
+    <!--题目预览-->
+    <div class="area preview">
+        <div class="item shine" style="left: 393px;top: 30px;"><img src="../images/treasure_hudong/shine.png" alt=""></div>
+        <div class="item title" style="left: 566px;top: 74px;">小朋友！完成以下任务就可以开宝箱赚学豆哟~</div>
+        <div class="item mission_box" style="left: 678px;top: 181px;">
+            <div class="item mission_wrapper" style="left: 51px;top: 118px;">
+                <div class="mission">
+                    <div class="tit">任务1：</div>
+                    <div class="ques">世界上最高的山峰是什么？</div>
+                </div>
+                <div class="mission">
+                    <div class="tit">任务2：</div>
+                    <div class="ques">小爱的工具是什么？</div>
+                </div>
+                <div class="mission">
+                    <div class="tit">任务3：</div>
+                    <div class="ques">乐迪的方法是什么？</div>
+                </div>
+            </div>
+        </div>
+        <div class="item" id="area0_item_0" style="left: 1617px;top: 824px;"><span>5</span>'s 跳过</div>
+    </div>
+    <!--题目合辑-->
+    <div class="area cata hide" style="left: 348px;top: 546px;">
+        <div class="pic" style="top: 69px;"><img src="../images/treasure_hudong/cartoon.png" alt=""></div>
+        <div class="pic" style="left: 212px;"><img id="mission" src="../images/treasure_hudong/mission_0.png" alt=""></div>
+        <div class="item area_1">
+            <div class="item" id="area1_item_0" style="left: 275px;top: 195px;">接任务</div>
+            <div class="item" id="area1_item_1" style="left: 275px;top: 282px;"><span>5</span>'s放弃</div>
+        </div>
+    </div>
+    <!--题目-->
+    <div class="area subject hide" style="left: 404px;top: 178px;">
+        <div class="txt title">任务1：宝贝，请问世界上最高的山峰是什么？</div>
+        <div class="options">
+            <div class="item" id="area2_item_0" style="left: 91px;top: 179px;">
+                <div class="pic"><img id="area2_pic_0" src="" alt=""></div>
+                <div class="txt" id="area2_txt_0">珠穆朗玛峰</div>
+                <!--<div class="right"></div>-->
+            </div>
+            <div class="item" id="area2_item_1" style="left: 623px;top: 179px;">
+                <div class="pic"><img id="area2_pic_1" src="" alt=""></div>
+                <div class="txt" id="area2_txt_1">阿尔卑斯山</div>
+                <!--<div class="wrong"></div>-->
+            </div>
+        </div>
+    </div>
+    <!--任务完成-->
+    <div class="area finish_box hide">
+        <div class="item finish">
+            <div class="pic" style="left: 19px;top: 103px;"><img src="../images/treasure_hudong/complete.png" alt=""></div>
+            <div class="pic" style="left: 12px;"><img src="../images/treasure_hudong/cat.png" alt=""></div>
+            <div class="pic" style="left: 282px;top: 61px;"><img src="../images/treasure_hudong/star.png" alt=""></div>
+            <div class="item finish_wrapper" style="left: 148px;top: 280px;">
+                <div class="finish_mission">
+                    <div class="tit">任务1：</div>
+                    <div class="beanNum">+25</div>
+                    <div class="ques">世界上最高的山峰是什么？</div>
+                </div>
+                <div class="finish_mission" style="top: 155px;">
+                    <div class="tit">任务2：</div>
+                    <div class="beanNum">+0</div>
+                    <div class="ques">小爱的工具是什么？</div>
+                </div>
+                <div class="finish_mission" style="top: 310px;">
+                    <div class="tit">任务3：</div>
+                    <div class="beanNum">+0</div>
+                    <div class="ques">乐迪的方法是什么？</div>
+                </div>
+            </div>
+        </div>
+        <div class="item get_bean" style="left: 947px;top: 229px;">
+            <div class="pic"><img src="../images/treasure_hudong/get_bean.png" alt=""></div>
+            <div class="txt" id="totalbean">25</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../js/WkEpg3.0.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script>
+    var pageobj;
+    (function(window, document) {
+        var area0, area1, area2;
+        var url = window.location.href;
+        var indexid = !WkEpg.Util.getURLParameter("indexid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("indexid", url)); //焦点数据
+        var areaid = !WkEpg.Util.getURLParameter("areaid", url) ? 0 : parseInt(WkEpg.Util.getURLParameter("areaid", url));    //焦点数据
+        var returnurl = !WkEpg.Util.getURLParameter("returnurl", url) ? "index.html" : decodeURIComponent(WkEpg.Util.getURLParameter("returnurl", url));
+
+        var focusObj = null;
+        var dataObj = null;
+        var controlObj = null;
+
+        var pTimer = null;
+        var mTimer = null;
+        var pcount = 5;
+        var mcount = 5;
+        var testData = {
+            missions: [
+                {id: 1,question:'世界上最高的山峰是什么？', answer: 0, beans: 25,choices:['珠穆朗玛峰','阿尔卑斯山']},
+                {id: 2,question:'小爱的工具是什么？', answer: 0, beans: 20,choices:['飞机','高铁']},
+                {id: 3,question:'乐迪的方法是什么？', answer: 1, beans: 25,choices:['方法1','方法2']}
+            ]
+        };
+        var datanum = '';
+        /*
+        * {
+        *   id: 1,
+        *   isRight: true,
+        *   bean: 25,
+        * }
+        * */
+        var result = [{},{},{}];
+        var whichMission = 0;
+
+        //焦点移动类
+        function FocusMove() {
+            this.createArea();
+            this.createFunction();
+        }
+        FocusMove.prototype = {
+            createArea: function(){
+                //@ Array(上、左、下、右)
+                //@ area.stablemoveindex("fromIndex-toId>toIndex")
+                area0 = WkEpg.AreaCreator(1, 1, [-1, -1, -1, -1], "area0_item_", "className:item item_focus", "className:item");
+                area1 = WkEpg.AreaCreator(2, 1, [-1, -1, -1, -1], "area1_item_", "className:item item_focus", "className:item");
+                area2 = WkEpg.AreaCreator(1, 2, [-1, -1, -1, -1], "area2_item_", "className:item item_focus", "className:item");
+
+                pageobj = WkEpg.PageCreator(areaid, indexid, new Array(area0, area1, area2));
+            },
+            createFunction: function () {
+                switch (areaid){
+                    case 0:
+                        $('.area').each(function(i){
+                            if(i == 0) $(this).removeClass('hide');
+                            else $(this).addClass('hide');
+                        });
+                        break;
+                    case 1:
+                        $('.area').each(function(i){
+                            if(i == 1) $(this).removeClass('hide');
+                            else $(this).addClass('hide');
+                        });
+                        break;
+                    case 2:
+                        $('.area').each(function(i){
+                            if(i == 2) $(this).removeClass('hide');
+                            else $(this).addClass('hide');
+                        });
+                        break;
+                }
+                area0.areaOkEvent = function(){
+                    $('.preview').addClass('hide');
+                    $('.cata').removeClass('hide');
+                    pageobj.changefocus(1,0);
+                    if(pTimer != null){
+                        clearInterval(pTimer);
+                        pTimer = null;
+                        pcount = 5;
+                        $('#area0_item_0').find('span').html(pcount);
+                        controlObj.missionInterval();
+                    }
+                };
+                area1.areaOkEvent = function () {
+                    switch (this.curindex){
+                        case 0:
+                            $('.cata').addClass('hide');
+                            $('.subject').removeClass('hide');
+                            pageobj.changefocus(2,0);
+                            dataObj.loadTest();
+                            break;
+                        case 1:
+                            $('.cata').addClass('hide');
+                            $('.finish_box').removeClass('hide');
+                            pageobj.curareaid = 3;
+                            controlObj.renderResult();
+                            break;
+                    }
+                    clearInterval(mTimer);
+                    mTimer = null;
+                    mcount = 5;
+                    $("#area1_item_1").find('span').html(mcount);
+                };
+                area2.areaOkEvent = function(){
+                    var curmission = testData.missions[whichMission];
+                    var rid = curmission.id;
+                    var risRight = this.curindex == curmission.answer ? true : false;
+                    var rbean = risRight ? curmission.beans : 0;
+                    result[whichMission].id = rid;
+                    result[whichMission].isRight = risRight;
+                    result[whichMission].bean = rbean;
+                    if(whichMission == 0){
+                        whichMission = 1;
+                        $('.subject').addClass('hide');
+                        $('.cata').removeClass('hide');
+                        controlObj.renderPic();
+                        controlObj.missionInterval();
+                        pageobj.changefocus(1,0);
+                    }
+                    else if(whichMission == 1){
+                        whichMission = 2;
+                        $('.subject').addClass('hide');
+                        $('.cata').removeClass('hide');
+                        controlObj.renderPic();
+                        controlObj.missionInterval();
+                        pageobj.changefocus(1,0);
+                    }
+                    else if(whichMission == 2){
+                        whichMission = 3;
+                        $('.subject').addClass('hide');
+                        $('.finish_box').removeClass('hide');
+                        controlObj.renderResult();
+                    }
+                };
+                WkEpg.Nav.keyBackEvent = function() {
+                    WkEpg.Util.gotoPage(returnurl);
+                };
+            },
+        };
+
+        //Dom操作类 页面滑动 轮播
+        function DomControl() {
+            this.previewInterval();
+        }
+        DomControl.prototype = {
+            missionInterval: function(){
+                mTimer = setInterval(function(){
+                    if(mcount > 1){
+                        mcount--;
+                        $("#area1_item_1").find('span').html(mcount);
+                    }
+                    else{
+                        clearInterval(mTimer);
+                        mTimer = null;
+                        $('.cata').addClass('hide');
+                        mcount = 5;
+                        $("#area1_item_1").find('span').html(mcount);
+                        $('.finish_box').removeClass('hide');
+                        pageobj.curareaid = 3;
+                        controlObj.renderResult();
+                    }
+                }, 1000);
+            },
+            previewInterval: function(){
+                pTimer = setInterval(function(){
+                    if(pcount > 1){
+                        pcount--;
+                        $('#area0_item_0').find('span').html(pcount);
+                    }
+                    else{
+                        clearInterval(pTimer);
+                        pTimer = null;
+                        pcount =  5;
+                        $('#area0_item_0').find('span').html(pcount);
+                        $('.preview').addClass('hide');
+                        $('.cata').removeClass('hide');
+                        pageobj.changefocus(1,0);
+                        controlObj.missionInterval();
+                    }
+                }, 1000);
+            },
+            renderMissions: function(items){
+                $('.mission_wrapper .mission').each(function(i){
+                    if(items[i]){
+                        $(this).find('.ques').html(items[i].question);
+                        $(this).removeClass('hide');
+                    }
+                    else{
+                        $(this).addClass('hide')
+                    }
+                })
+            },
+            renderSubject: function(obj){
+                $('.subject .title').html('任务' + (whichMission + 1) + '：宝贝，请问' + obj.question);
+                $('#area2_txt_0').html(obj.option1);
+                $('#area2_txt_1').html(obj.option2);
+                this.renderPic();
+            },
+            renderPic: function(){
+                $('#mission').attr('src', '../images/treasure_hudong/mission_' + whichMission + '.png');
+            },
+            renderResult: function(){
+                var totalNum = 0;
+                $('.finish_mission').each(function(i){
+                    if(i < datanum){
+                        var rHTML = '';
+                        if(result[i].isRight){
+                            rHTML = '<div class="pic"><img src="../images/treasure_hudong/finish_right.png" alt=""></div>';
+                        }else{
+                            rHTML = '<div class="pic"><img src="../images/treasure_hudong/finish_wrong.png" alt=""></div>';
+                        }
+                        $(this).append($(rHTML));
+
+                        $(this).find('.beanNum').html(result[i].bean ? result[i].bean : 0);
+                        totalNum += result[i].bean ? result[i].bean : 0;
+                    }
+                });
+                $('#totalbean').html(totalNum);
+            }
+        };
+
+        //加载数据的类
+        function loadData() {
+            this.loadTest();
+            this.loadMissions();
+        }
+        loadData.prototype = {
+            loadTest: function(){
+                datanum = testData.missions.length;
+                var newObj = {};
+                switch (whichMission){
+                    case 0:
+                        newObj.question = testData.missions[0].question;
+                        newObj.option1 = testData.missions[0].choices[0];
+                        newObj.option2 = testData.missions[0].choices[1];
+                        break;
+                    case 1:
+                         newObj.question = testData.missions[1].question;
+                         newObj.option1 = testData.missions[1].choices[0];
+                         newObj.option2 = testData.missions[1].choices[1];
+                        break;
+                    case 2:
+                         newObj.question = testData.missions[2].question;
+                         newObj.option1 = testData.missions[2].choices[0];
+                         newObj.option2 = testData.missions[2].choices[1];
+                        break;
+                }
+                controlObj.renderSubject(newObj);
+            },
+            loadMissions: function(){
+                var programs = testData.missions;
+                controlObj.renderMissions(programs);
+            },
+            getReturnUrl : function(areaid, indexid) {
+                if (url.indexOf('?') > 0) {
+                    return url.split('?')[0]+"?returnurl=" + encodeURIComponent(returnurl)+"&areaid="+areaid+"&indexid="+indexid;
+                } else {
+                    return url+"?returnurl=" + encodeURIComponent(returnurl)+"&areaid="+areaid+"&indexid="+indexid;
+                };
+            }
+        }
+
+        //初始化
+        window.addEventListener("unload", function() {
+        }, false);
+        window.addEventListener("load", function() {
+            window.focus();
+            if (!focusObj) focusObj = new FocusMove();
+            if (!controlObj) controlObj = new DomControl();
+            if (!dataObj) dataObj = new loadData();
+        }, false);
+    })(window, document);
+</script>
+</body>
+</html>
